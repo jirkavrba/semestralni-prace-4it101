@@ -13,6 +13,8 @@ import java.util.Set;
 
 public class DungeonGame {
 
+    private boolean playing = false;
+
     private final Player player;
 
     private final GamePlan gamePlan;
@@ -26,6 +28,8 @@ public class DungeonGame {
     }
 
     public void start() {
+        playing = true;
+        prompt.startInputLoop();
     }
 
     public Player getPlayer() {
@@ -34,6 +38,10 @@ public class DungeonGame {
 
     public GamePlan getGamePlan() {
         return this.gamePlan;
+    }
+
+    public boolean isPlaying() {
+        return this.playing;
     }
 
     private Player createDefaultPlayer() {
