@@ -2,7 +2,7 @@ package dev.vrba.vse.adventure.game.entity;
 
 
 import com.sun.istack.NotNull;
-import dev.vrba.vse.adventure.game.plan.items.Backpack;
+import dev.vrba.vse.adventure.game.items.Backpack;
 
 public class Player implements Entity {
 

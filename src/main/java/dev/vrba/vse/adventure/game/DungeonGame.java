@@ -5,7 +5,7 @@ import dev.vrba.vse.adventure.game.plan.BasicRoom;
 import dev.vrba.vse.adventure.game.plan.DungeonGamePlan;
 import dev.vrba.vse.adventure.game.plan.GamePlan;
 import dev.vrba.vse.adventure.game.plan.Room;
-import dev.vrba.vse.adventure.game.plan.items.Backpack;
+import dev.vrba.vse.adventure.game.items.Backpack;
 
 import java.util.HashSet;
 import java.util.Set;

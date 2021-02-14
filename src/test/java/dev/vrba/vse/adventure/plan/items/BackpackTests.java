@@ -1,8 +1,8 @@
 package dev.vrba.vse.adventure.plan.items;
 
 import com.sun.istack.NotNull;
-import dev.vrba.vse.adventure.game.plan.items.Backpack;
-import dev.vrba.vse.adventure.game.plan.items.PickableItem;
+import dev.vrba.vse.adventure.game.items.Backpack;
+import dev.vrba.vse.adventure.game.items.PickableItem;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,4 +1,4 @@
-package dev.vrba.vse.adventure.game.plan.items;
+package dev.vrba.vse.adventure.game.items;
 
 import com.sun.istack.NotNull;
 
