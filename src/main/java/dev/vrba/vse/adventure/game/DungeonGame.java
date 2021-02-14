@@ -12,9 +12,21 @@ import java.util.Set;
 
 public class DungeonGame {
 
+    private Player player;
+
+    private GamePlan gamePlan;
+
     public void start() {
-        Player player = createDefaultPlayer();
-        GamePlan plan = createDefaultGamePlan();
+        this.player = createDefaultPlayer();
+        this.gamePlan = createDefaultGamePlan();
+    }
+
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public GamePlan getGamePlan() {
+        return this.gamePlan;
     }
 
     private Player createDefaultPlayer() {
@@ -24,7 +36,7 @@ public class DungeonGame {
 
     private GamePlan createDefaultGamePlan() {
         Set<Room> rooms = new HashSet<>();
-        BasicRoom entry = new BasicRoom();
+        BasicRoom entry = new BasicRoom("Entrance");
 
         rooms.add(entry);
 
