@@ -22,30 +22,39 @@ public class Backpack {
     }
 
     public int getAvailableWeight() {
-        return this.availableWeight;
+        return availableWeight;
+    }
+
+    public int getRemainingWeight() {
+        return availableWeight - getTotalItemsWeight();
     }
 
     public int getTotalItemsWeight() {
-        return this.items
+        return items
                 .stream()
                 .map(PickableItem::getWeight)
                 .reduce(0, Integer::sum);
     }
 
     public Set<PickableItem> getItems() {
-        return this.items;
+        return items;
     }
 
     public boolean containsItem(@NotNull PickableItem item) {
-        return this.items.contains(item);
+        return items.contains(item);
     }
 
-    public boolean canInsertItem(@NotNull PickableItem item) {
-       return (this.getTotalItemsWeight() + item.getWeight()) <= this.getAvailableWeight();
+    public boolean canAdd(@NotNull PickableItem item) {
+       return item.getWeight() <= this.getRemainingWeight();
     }
 
-    public Backpack insertItem(@NotNull PickableItem item) {
+    public Backpack add(@NotNull PickableItem item) {
         this.items.add(item);
+        return this;
+    }
+
+    public Backpack remove(@NotNull PickableItem item) {
+        this.items.remove(item);
         return this;
     }
 }
