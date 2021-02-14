@@ -3,6 +3,7 @@ package dev.vrba.vse.adventure.game.ui;
 import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.DungeonGame;
 import dev.vrba.vse.adventure.game.commands.Command;
+import dev.vrba.vse.adventure.game.commands.HelpCommand;
 import dev.vrba.vse.adventure.game.exceptions.CommandNotFoundException;
 
 import java.io.BufferedReader;
@@ -15,7 +16,7 @@ public class CommandPrompt {
     private DungeonGame game;
 
     private final Command[] commands = new Command[]{
-
+        new HelpCommand()
     };
 
     public CommandPrompt(@NotNull DungeonGame game) {
