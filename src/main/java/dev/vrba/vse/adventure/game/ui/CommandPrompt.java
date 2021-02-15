@@ -68,13 +68,18 @@ public class CommandPrompt {
         String line = reader.readLine();
         String[] parts = line.split(" ");
 
-        String name = parts[0];
-        Command command = Arrays.stream(commands)
-                .filter(c -> c.getName().equals(name))
-                .findFirst()
-                .orElseThrow(CommandNotFoundException::new);
+        try {
+            String name = parts[0];
+            Command command = Arrays.stream(commands)
+                    .filter(c -> c.getName().equals(name))
+                    .findFirst()
+                    .orElseThrow(CommandNotFoundException::new);
 
-        command.execute(game, Arrays.copyOfRange(parts, 1, parts.length));
+            command.execute(game, Arrays.copyOfRange(parts, 1, parts.length));
+        }
+        finally {
+            reader.close();
+        }
     }
 
     public void showExitNote() {
