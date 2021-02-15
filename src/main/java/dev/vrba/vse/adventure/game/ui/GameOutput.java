@@ -76,6 +76,7 @@ public class GameOutput {
                     builder.append(Color.RED)
                             .append(" - ")
                             .append("<Zamčený východ> - ")
+                            .append(Color.RESET)
                             .append(exit.getReasonWhyCannotBeUsed())
                             .append("\n");
                 }
@@ -98,9 +99,12 @@ public class GameOutput {
                 if (item instanceof PickableItem) {
                     PickableItem pickableItem = (PickableItem) item;
 
-                    builder.append(" (tuto věc lze sebrat) - váha: ")
+                    builder.append(" - váha: ")
                             .append(player.getBackpack().canAdd(pickableItem) ? Color.GREEN : Color.RED)
                             .append(pickableItem.getWeight())
+                            .append(" (")
+                            .append(player.getBackpack().canAdd(pickableItem) ? "tuto věc lze sebrat" : "tato věc je příliš těžká")
+                            .append(")")
                             .append(Color.RESET);
                 }
 

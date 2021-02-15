@@ -5,15 +5,15 @@ import dev.vrba.vse.adventure.game.entity.Player;
 
 public class BasicRoomExit implements RoomExit {
 
-    private final Room to;
+    private final Room target;
 
-    public BasicRoomExit(@NotNull Room to) {
-        this.to = to;
+    public BasicRoomExit(@NotNull Room target) {
+        this.target = target;
     }
 
     @Override
     public Room getTargetRoom() {
-        return this.to;
+        return this.target;
     }
 
     @Override

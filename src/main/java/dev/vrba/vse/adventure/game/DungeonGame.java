@@ -2,6 +2,7 @@ package dev.vrba.vse.adventure.game;
 
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.items.Key;
+import dev.vrba.vse.adventure.game.items.PickableItem;
 import dev.vrba.vse.adventure.game.plan.*;
 import dev.vrba.vse.adventure.game.items.Backpack;
 import dev.vrba.vse.adventure.game.ui.CommandPrompt;
@@ -58,19 +59,35 @@ public class DungeonGame {
 
         BasicRoom entry = new BasicRoom("vstup");
         BasicRoom hallway = new BasicRoom("chodba");
-
-        entry.addExit(new BasicRoomExit(hallway));
-        hallway.addExit(new BasicRoomExit(entry));
-
-        rooms.add(entry);
-        rooms.add(hallway);
+        BasicRoom locked = new BasicRoom("tajná místnost");
 
         Key redKey = new Key(Key.KeyColor.RED);
         Key blueKey = new Key(Key.KeyColor.BLUE);
         Key greenKey = new Key(Key.KeyColor.GREEN);
 
+        entry.addExit(new BasicRoomExit(hallway));
+        hallway.addExit(new BasicRoomExit(entry));
+
+        entry.addExit(new LockedRoomExit(locked, greenKey));
+
+        PickableItem wayTooHeavy = new PickableItem() {
+            @Override
+            public int getWeight() {
+                return 110;
+            }
+
+            @Override
+            public String getName() {
+                return "Way too heavy item";
+            }
+        };
+
+        rooms.add(entry);
+        rooms.add(hallway);
+
         entry.addItem(greenKey);
         hallway.addItem(redKey);
+        hallway.addItem(wayTooHeavy);
 
         return new DungeonGamePlan(rooms, entry);
     }
