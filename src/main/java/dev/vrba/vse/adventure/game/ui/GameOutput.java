@@ -61,8 +61,9 @@ public class GameOutput {
                 builder.append("Východy, které je možné použít:\n");
 
                 for (RoomExit exit : usable) {
-                    builder.append(Color.BLUE)
-                            .append(exit.getTo().getName())
+                    builder.append(" - ")
+                            .append(Color.BLUE)
+                            .append(exit.getTargetRoom().getName())
                             .append(Color.RESET)
                             .append("\n");
                 }
@@ -73,6 +74,7 @@ public class GameOutput {
 
                 for (RoomExit exit : locked) {
                     builder.append(Color.RED)
+                            .append(" - ")
                             .append("<Zamčený východ> - ")
                             .append(exit.getReasonWhyCannotBeUsed())
                             .append("\n");
@@ -91,7 +93,7 @@ public class GameOutput {
             builder.append("V místnosti se nachází následující věci:\n");
 
             for (Item item : items) {
-                builder.append(item.getName());
+                builder.append(" - ").append(item.getName());
 
                 if (item instanceof PickableItem) {
                     PickableItem pickableItem = (PickableItem) item;

@@ -22,6 +22,7 @@ public class DungeonGame {
     public DungeonGame() {
         this.player = createDefaultPlayer();
         this.gamePlan = createDefaultGamePlan();
+
         this.prompt = new CommandPrompt(this);
     }
 
@@ -55,10 +56,11 @@ public class DungeonGame {
     private GamePlan createDefaultGamePlan() {
         Set<Room> rooms = new HashSet<>();
 
-        BasicRoom entry = new BasicRoom("Vstup");
-        BasicRoom hallway = new BasicRoom("Chodba");
+        BasicRoom entry = new BasicRoom("vstup");
+        BasicRoom hallway = new BasicRoom("chodba");
 
         entry.addExit(new BasicRoomExit(hallway));
+        hallway.addExit(new BasicRoomExit(entry));
 
         rooms.add(entry);
         rooms.add(hallway);

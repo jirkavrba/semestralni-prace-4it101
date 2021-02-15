@@ -5,6 +5,7 @@ import dev.vrba.vse.adventure.game.DungeonGame;
 import dev.vrba.vse.adventure.game.commands.Command;
 import dev.vrba.vse.adventure.game.commands.ExitCommand;
 import dev.vrba.vse.adventure.game.commands.HelpCommand;
+import dev.vrba.vse.adventure.game.commands.MoveCommand;
 import dev.vrba.vse.adventure.game.exceptions.CommandNotFoundException;
 
 import java.io.BufferedReader;
@@ -19,8 +20,9 @@ public class CommandPrompt {
     private final GameOutput output;
 
     private final Command[] commands = new Command[]{
+        new ExitCommand(),
         new HelpCommand(),
-        new ExitCommand()
+        new MoveCommand()
     };
 
     public CommandPrompt(@NotNull DungeonGame game) {
@@ -39,6 +41,12 @@ public class CommandPrompt {
             }
             catch (CommandNotFoundException exception) {
                 System.out.println(Color.RED + "Příkaz nenalezen!" + Color.RESET);
+            }
+            catch (IllegalArgumentException exception) {
+                System.out.println(Color.RED + "Chybné argumenty příkazu:\n" + exception.getMessage() + Color.RESET);
+            }
+            finally {
+                System.out.println("------------------------------------");
             }
         }
     }

@@ -4,7 +4,7 @@ import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.entity.Player;
 
 public interface RoomExit {
-    Room getTo();
+    Room getTargetRoom();
     boolean canBeUsed(@NotNull Player player);
     String getReasonWhyCannotBeUsed();
 }

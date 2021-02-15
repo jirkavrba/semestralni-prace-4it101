@@ -12,7 +12,7 @@ public class BasicRoomExit implements RoomExit {
     }
 
     @Override
-    public Room getTo() {
+    public Room getTargetRoom() {
         return this.to;
     }
 
