@@ -6,4 +6,5 @@ import dev.vrba.vse.adventure.game.entity.Player;
 public interface RoomExit {
     Room getTo();
     boolean canBeUsed(@NotNull Player player);
+    String getReasonWhyCannotBeUsed();
 }

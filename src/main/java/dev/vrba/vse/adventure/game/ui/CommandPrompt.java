@@ -33,10 +33,10 @@ public class CommandPrompt {
                 handleNextCommand();
             }
             catch (IOException exception) {
-                System.out.println(GameOutput.TerminalColor.RED + "Došlo k chybě I/O." + GameOutput.TerminalColor.RESET);
+                System.out.println(Color.RED + "Došlo k chybě I/O." + Color.RESET);
             }
             catch (CommandNotFoundException exception) {
-                System.out.println(GameOutput.TerminalColor.RED + "Příkaz nenalezen!" + GameOutput.TerminalColor.RESET);
+                System.out.println(Color.RED + "Příkaz nenalezen!" + Color.RESET);
             }
         }
     }

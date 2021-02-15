@@ -20,4 +20,10 @@ public class BasicRoomExit implements RoomExit {
     public boolean canBeUsed(@NotNull Player player) {
         return true;
     }
+
+    @Override
+    public String getReasonWhyCannotBeUsed() {
+        // This shouldn't happen at all...
+        return "";
+    }
 }
