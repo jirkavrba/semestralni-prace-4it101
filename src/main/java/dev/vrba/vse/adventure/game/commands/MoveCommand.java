@@ -15,14 +15,15 @@ public class MoveCommand implements Command {
 
     @Override
     public DungeonGame execute(DungeonGame game, String... arguments) {
-        Player player = game.getPlayer();
-        Room room = game.getGamePlan().getCurrentRoom();
-
-        if (arguments.length != 1) {
+        if (arguments.length == 0) {
             throw new IllegalArgumentException("Příkaz vyžaduje právě jeden argument, a to jméno cílové místnosti.");
         }
 
-        String name = arguments[0];
+        Player player = game.getPlayer();
+        Room room = game.getGamePlan().getCurrentRoom();
+
+
+        String name = String.join(" ", arguments);
         Optional<RoomExit> chosenExit = room.getExits()
                 .stream()
                 .filter(exit -> exit.canBeUsed(player))

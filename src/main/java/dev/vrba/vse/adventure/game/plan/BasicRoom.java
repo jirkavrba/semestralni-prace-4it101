@@ -50,14 +50,17 @@ public class BasicRoom implements Room {
     }
 
     @Override
-    public Room addItem(@NotNull Item item) {
+    public void addItem(@NotNull Item item) {
         this.items.add(item);
-        return this;
     }
 
     @Override
-    public Room addExit(@NotNull RoomExit exit) {
+    public void removeItem(@NotNull Item item) {
+        this.items.remove(item);
+    }
+
+    @Override
+    public void addExit(@NotNull RoomExit exit) {
         this.exits.add(exit);
-        return this;
     }
 }

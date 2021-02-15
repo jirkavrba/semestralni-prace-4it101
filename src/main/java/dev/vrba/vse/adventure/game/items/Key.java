@@ -6,25 +6,18 @@ import dev.vrba.vse.adventure.game.ui.Color;
 public class Key implements PickableItem {
     // TODO: Maybe extract color rendering etc. to an UI-related class?
     public enum KeyColor {
-        RED("Červený", Color.RED),
-        BLUE("Modrý", Color.BLUE),
-        GREEN("Zelený", Color.GREEN);
+        RED("červený"),
+        BLUE("modrý"),
+        GREEN("zelený");
 
         private final String name;
 
-        private final String color;
-
-        KeyColor(String name, String color) {
+        KeyColor(String name) {
             this.name = name;
-            this.color = color;
         }
 
         public String getName() {
             return this.name;
-        }
-
-        public String getColor() {
-            return this.color;
         }
     }
 
@@ -36,7 +29,7 @@ public class Key implements PickableItem {
 
     @Override
     public String getName() {
-        return color.getColor() + color.getName() + " klíč" + Color.RESET;
+        return color.getName() + " klíč";
     }
 
     @Override

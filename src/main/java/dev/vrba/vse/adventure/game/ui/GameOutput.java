@@ -3,6 +3,7 @@ package dev.vrba.vse.adventure.game.ui;
 import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.DungeonGame;
 import dev.vrba.vse.adventure.game.entity.Player;
+import dev.vrba.vse.adventure.game.items.Backpack;
 import dev.vrba.vse.adventure.game.items.Item;
 import dev.vrba.vse.adventure.game.items.PickableItem;
 import dev.vrba.vse.adventure.game.plan.Room;
@@ -29,6 +30,8 @@ public class GameOutput {
         Room room = game.getGamePlan().getCurrentRoom();
         StringBuilder builder = new StringBuilder();
 
+        printBackpack(builder);
+
         builder.append("Nacházíš se v místnosti ")
                 .append(Color.CYAN)
                 .append(room.getName())
@@ -39,6 +42,24 @@ public class GameOutput {
         printItems(builder);
 
         return builder.toString();
+    }
+
+    private void printBackpack(@NotNull StringBuilder builder) {
+        Backpack backpack = game.getPlayer().getBackpack();
+
+        builder.append("Váha věcí v batohu: " + Color.BLUE)
+                .append(backpack.getTotalItemsWeight())
+                .append("/").append(backpack.getAvailableWeight())
+                .append(Color.RESET)
+                .append("\n");
+
+        if (!backpack.getItems().isEmpty()) {
+            Iterable<String> names = backpack.getItems().stream().map(Item::getName).collect(Collectors.toList());
+
+            builder.append("Věci v batohu: ")
+                    .append(String.join(", ", names))
+                    .append("\n");
+        }
     }
 
     private void printExists(@NotNull StringBuilder builder) {

@@ -2,10 +2,7 @@ package dev.vrba.vse.adventure.game.ui;
 
 import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.DungeonGame;
-import dev.vrba.vse.adventure.game.commands.Command;
-import dev.vrba.vse.adventure.game.commands.ExitCommand;
-import dev.vrba.vse.adventure.game.commands.HelpCommand;
-import dev.vrba.vse.adventure.game.commands.MoveCommand;
+import dev.vrba.vse.adventure.game.commands.*;
 import dev.vrba.vse.adventure.game.exceptions.CommandNotFoundException;
 
 import java.io.BufferedReader;
@@ -22,7 +19,8 @@ public class CommandPrompt {
     private final Command[] commands = new Command[]{
         new ExitCommand(),
         new HelpCommand(),
-        new MoveCommand()
+        new MoveCommand(),
+        new PickCommand()
     };
 
     public CommandPrompt(@NotNull DungeonGame game) {

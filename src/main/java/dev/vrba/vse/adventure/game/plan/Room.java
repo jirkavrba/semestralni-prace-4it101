@@ -9,6 +9,7 @@ public interface Room {
     Set<RoomExit> getExits();
     Set<Item> getItems();
 
-    Room addItem(Item item);
-    Room addExit(RoomExit exit);
+    void addExit(RoomExit exit);
+    void addItem(Item item);
+    void removeItem(Item item);
 }
