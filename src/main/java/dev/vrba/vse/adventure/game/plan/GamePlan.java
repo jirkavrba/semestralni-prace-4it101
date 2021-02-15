@@ -7,5 +7,5 @@ import java.util.Set;
 public interface GamePlan {
     Set<Room> getRooms();
     Room getCurrentRoom();
-    GamePlan setCurrentRoom(@NotNull Room room);
+    void setCurrentRoom(@NotNull Room room);
 }
