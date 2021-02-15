@@ -42,7 +42,8 @@ public class GameOutput {
     private void printBackpack(@NotNull StringBuilder builder) {
         Backpack backpack = game.getPlayer().getBackpack();
 
-        builder.append("Váha věcí v batohu: " + Color.BLUE)
+        builder.append("Váha věcí v batohu: ")
+                .append(Color.BLUE)
                 .append(backpack.getTotalItemsWeight())
                 .append("/").append(backpack.getAvailableWeight())
                 .append(Color.RESET)

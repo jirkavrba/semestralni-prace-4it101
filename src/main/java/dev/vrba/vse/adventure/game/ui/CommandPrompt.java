@@ -83,7 +83,7 @@ public class CommandPrompt {
     }
 
     public void showWinNote() {
-        System.out.println("You won lmao, IDK...");
+        System.out.println("Vyhrál jsi.");
     }
 
     public void showDamagedByEnemyNote(LivingEntity enemy) {
