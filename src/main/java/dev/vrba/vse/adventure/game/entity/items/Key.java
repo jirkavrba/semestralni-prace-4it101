@@ -1,7 +1,6 @@
-package dev.vrba.vse.adventure.game.items;
+package dev.vrba.vse.adventure.game.entity.items;
 
 import com.sun.istack.NotNull;
-import dev.vrba.vse.adventure.game.ui.Color;
 
 public class Key implements PickableItem {
     // TODO: Maybe extract color rendering etc. to an UI-related class?

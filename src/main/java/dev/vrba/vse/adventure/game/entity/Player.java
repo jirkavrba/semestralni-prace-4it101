@@ -3,8 +3,8 @@ package dev.vrba.vse.adventure.game.entity;
 
 import com.sun.istack.NotNull;
 import com.sun.istack.Nullable;
-import dev.vrba.vse.adventure.game.items.Backpack;
-import dev.vrba.vse.adventure.game.items.EquipableItem;
+import dev.vrba.vse.adventure.game.entity.items.Backpack;
+import dev.vrba.vse.adventure.game.entity.items.EquipableItem;
 
 public class Player implements LivingEntity {
     @Nullable

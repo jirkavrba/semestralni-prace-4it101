@@ -1,7 +1,7 @@
 package dev.vrba.vse.adventure.game.plan;
 
 import com.sun.istack.NotNull;
-import dev.vrba.vse.adventure.game.items.Item;
+import dev.vrba.vse.adventure.game.entity.items.Item;
 
 import java.util.Arrays;
 import java.util.HashSet;

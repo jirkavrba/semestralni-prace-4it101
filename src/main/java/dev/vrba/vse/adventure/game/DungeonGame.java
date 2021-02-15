@@ -2,11 +2,11 @@ package dev.vrba.vse.adventure.game;
 
 import dev.vrba.vse.adventure.game.entity.LivingEntityStats;
 import dev.vrba.vse.adventure.game.entity.Player;
-import dev.vrba.vse.adventure.game.items.Coins;
-import dev.vrba.vse.adventure.game.items.Key;
-import dev.vrba.vse.adventure.game.items.Sword;
+import dev.vrba.vse.adventure.game.entity.items.Coins;
+import dev.vrba.vse.adventure.game.entity.items.Key;
+import dev.vrba.vse.adventure.game.entity.items.Sword;
 import dev.vrba.vse.adventure.game.plan.*;
-import dev.vrba.vse.adventure.game.items.Backpack;
+import dev.vrba.vse.adventure.game.entity.items.Backpack;
 import dev.vrba.vse.adventure.game.ui.CommandPrompt;
 
 import java.util.HashSet;

@@ -2,8 +2,8 @@ package dev.vrba.vse.adventure.game.commands;
 
 import dev.vrba.vse.adventure.game.DungeonGame;
 import dev.vrba.vse.adventure.game.entity.Player;
-import dev.vrba.vse.adventure.game.items.Item;
-import dev.vrba.vse.adventure.game.items.PickableItem;
+import dev.vrba.vse.adventure.game.entity.items.Item;
+import dev.vrba.vse.adventure.game.entity.items.PickableItem;
 import dev.vrba.vse.adventure.game.plan.Room;
 
 import java.util.Optional;

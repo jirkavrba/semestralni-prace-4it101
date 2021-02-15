@@ -2,7 +2,7 @@ package dev.vrba.vse.adventure.game.plan;
 
 import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.entity.Player;
-import dev.vrba.vse.adventure.game.items.Key;
+import dev.vrba.vse.adventure.game.entity.items.Key;
 
 public class LockedRoomExit extends BasicRoomExit {
 

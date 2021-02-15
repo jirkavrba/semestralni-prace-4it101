@@ -1,4 +1,4 @@
-package dev.vrba.vse.adventure.game.items;
+package dev.vrba.vse.adventure.game.entity.items;
 
 import dev.vrba.vse.adventure.game.entity.LivingEntityStats;
 
