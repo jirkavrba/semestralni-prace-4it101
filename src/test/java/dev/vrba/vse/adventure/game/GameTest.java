@@ -1,6 +1,10 @@
 package dev.vrba.vse.adventure.game;
 
 import com.sun.istack.NotNull;
+import dev.vrba.vse.adventure.AdventureGame;
+import dev.vrba.vse.adventure.game.entity.Player;
+import dev.vrba.vse.adventure.game.entity.items.Trophy;
+import dev.vrba.vse.adventure.game.plan.GamePlan;
 import dev.vrba.vse.adventure.game.plan.Room;
 import dev.vrba.vse.adventure.game.ui.CommandPrompt;
 
@@ -20,9 +24,24 @@ public abstract class GameTest {
     }
 
     protected static DungeonGame createGameWithMockedCommandPrompt() {
-        DungeonGame game = new DungeonGame();
+        Trophy trophy = AdventureGame.createDefaultTrophy();
+        Player player = AdventureGame.createDefaultPlayer();
+        GamePlan plan = AdventureGame.createDefaultGamePlan(trophy);
 
+        return createGameWithMockedCommandPrompt(trophy, player, plan);
+    }
+
+    protected static DungeonGame createGameWithMockedCommandPrompt(
+            @NotNull Trophy trophy,
+            @NotNull Player player,
+            @NotNull GamePlan plan
+    ) {
+
+        DungeonGame game = new DungeonGame(player, plan);
+
+        game.setTrophy(trophy);
         game.setCommandPrompt(new FakeCommandPrompt(game));
+
         game.start();
 
         return game;
