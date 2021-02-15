@@ -5,6 +5,7 @@ import dev.vrba.vse.adventure.game.GameTest;
 import dev.vrba.vse.adventure.game.entity.LivingEntityStats;
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.entity.items.Potion;
+import dev.vrba.vse.adventure.game.entity.items.Sword;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -59,5 +60,29 @@ public class ConsumeCommandTest extends GameTest {
 
         assertEquals(60, player.getStats().getHealth());
         assertEquals(30, player.getStats().getStrength());
+    }
+
+    @Test
+    public void cannotInvokeWithTargetThatIsNotConsumable() {
+        DungeonGame game = createGameWithMockedCommandPrompt();
+        ConsumeCommand command = new ConsumeCommand();
+
+        Sword dummy = new Sword(10);
+        Player player = game.getPlayer();
+
+        player.getBackpack().add(dummy);
+
+        assertEquals(50, player.getStats().getHealth());
+        assertEquals(10, player.getStats().getStrength());
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> command.execute(game, "meč"));
+
+        assertEquals(
+                "Věc s názvem meč není možné vypít.",
+                exception.getMessage()
+        );
+
+        assertEquals(50, player.getStats().getHealth());
+        assertEquals(10, player.getStats().getStrength());
     }
 }
