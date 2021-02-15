@@ -14,7 +14,7 @@ public class MoveCommand implements Command {
     }
 
     @Override
-    public DungeonGame execute(DungeonGame game, String... arguments) {
+    public void execute(DungeonGame game, String... arguments) {
         if (arguments.length == 0) {
             throw new IllegalArgumentException("Příkaz vyžaduje právě jeden argument, a to jméno cílové místnosti.");
         }
@@ -36,6 +36,5 @@ public class MoveCommand implements Command {
 
         game.getGamePlan().setCurrentRoom(chosenExit.get().getTargetRoom());
 
-        return game;
     }
 }

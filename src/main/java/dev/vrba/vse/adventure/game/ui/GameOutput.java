@@ -79,6 +79,11 @@ public class GameOutput {
                     .append(Color.PURPLE)
                     .append(player.getEquippedItem().getName())
                     .append(Color.RESET)
+                    .append(" (+")
+                    .append(player.getEquippedItem().getEquippedBoost().getHealth())
+                    .append(" životů, +")
+                    .append(player.getEquippedItem().getEquippedBoost().getStrength())
+                    .append(" síly)")
                     .append("\n");
         }
     }

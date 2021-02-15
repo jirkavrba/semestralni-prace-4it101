@@ -15,7 +15,7 @@ public class PickCommand implements Command {
     }
 
     @Override
-    public DungeonGame execute(DungeonGame game, String... arguments) {
+    public void execute(DungeonGame game, String... arguments) {
         if (arguments.length == 0) {
             throw new IllegalArgumentException("Příkaz vyžaduje právě jeden argument, a to jméno věci, kterou má hráč sebrat.");
         }
@@ -46,6 +46,5 @@ public class PickCommand implements Command {
         room.removeItem(item);
         player.getBackpack().add(item);
 
-        return game;
     }
 }

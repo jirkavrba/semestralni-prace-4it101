@@ -13,11 +13,12 @@ import java.util.Arrays;
 
 public class CommandPrompt {
 
-    private DungeonGame game;
+    private final DungeonGame game;
 
     private final GameOutput output;
 
     private final Command[] commands = new Command[]{
+        new BonkCommand(),
         new DropCommand(),
         new ExitCommand(),
         new EquipCommand(),
@@ -72,7 +73,7 @@ public class CommandPrompt {
                 .findFirst()
                 .orElseThrow(CommandNotFoundException::new);
 
-        game = command.execute(game, Arrays.copyOfRange(parts, 1, parts.length));
+        command.execute(game, Arrays.copyOfRange(parts, 1, parts.length));
     }
 
     public void showExitNote() {

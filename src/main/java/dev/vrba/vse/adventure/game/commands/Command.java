@@ -5,5 +5,5 @@ import dev.vrba.vse.adventure.game.DungeonGame;
 
 public interface Command {
     String getName();
-    DungeonGame execute(@NotNull DungeonGame game, String... arguments);
+    void execute(@NotNull DungeonGame game, String... arguments);
 }

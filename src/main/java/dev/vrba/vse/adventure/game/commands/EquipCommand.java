@@ -12,7 +12,7 @@ public class EquipCommand implements Command {
     }
 
     @Override
-    public DungeonGame execute(DungeonGame game, String... arguments) {
+    public void execute(DungeonGame game, String... arguments) {
         if (arguments.length == 0) {
             throw new IllegalArgumentException("Příkaz vyžaduje právě jeden argument, a to jméno věci, kterou má hráč vzít do ruky.");
         }
@@ -31,6 +31,5 @@ public class EquipCommand implements Command {
         }
 
         player.equip((EquipableItem) item);
-        return game;
     }
 }

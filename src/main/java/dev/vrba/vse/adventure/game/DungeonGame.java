@@ -26,7 +26,6 @@ public class DungeonGame {
     public DungeonGame() {
         this.player = createDefaultPlayer();
         this.gamePlan = createDefaultGamePlan();
-
         this.prompt = new CommandPrompt(this);
     }
 

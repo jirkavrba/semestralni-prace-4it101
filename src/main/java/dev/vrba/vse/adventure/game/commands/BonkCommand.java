@@ -1,37 +1,38 @@
 package dev.vrba.vse.adventure.game.commands;
 
 import dev.vrba.vse.adventure.game.DungeonGame;
+import dev.vrba.vse.adventure.game.entity.LivingEntity;
 import dev.vrba.vse.adventure.game.entity.Player;
-import dev.vrba.vse.adventure.game.entity.items.PickableItem;
 import dev.vrba.vse.adventure.game.plan.Room;
 
-public class DropCommand implements Command {
+public class BonkCommand implements Command {
     @Override
     public String getName() {
-        return "polož";
+        return "bonkni";
     }
 
     @Override
     public void execute(DungeonGame game, String... arguments) {
         if (arguments.length == 0) {
-            throw new IllegalArgumentException("Příkaz vyžaduje právě jeden argument, a to jméno věci, kterou má hráč položit.");
+            throw new IllegalArgumentException("Příkaz vyžaduje právě jeden argument, a to jméno nepřítele, kterého chceš bonknout.");
         }
 
         Player player = game.getPlayer();
         Room room = game.getGamePlan().getCurrentRoom();
 
         String name = String.join(" ", arguments);
-        PickableItem item = player.getBackpack().getItems()
+
+        LivingEntity enemy = room.getEnemies()
                 .stream()
                 .filter(current -> current.getName().equals(name))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Věc s názvem " + name + " nebyla v batohu nalezena."));
+                .orElseThrow(() -> new IllegalArgumentException("Nepřítel se jménem " + name + " nebyl v mísnosti s názvem " + room.getName() + " nalezen."));
 
-        room.addItem(item);
-        player.getBackpack().remove(item);
+        enemy.damage(player.getStats().getStrength());
 
-        if (player.hasEquippedItem() && player.getEquippedItem().equals(item)) {
-            player.equip(null);
+        if (enemy.isDead()) {
+            // TODO: Enemies might drop loot?
+            room.removeEnemy(enemy); // F
         }
 
     }

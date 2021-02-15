@@ -9,8 +9,7 @@ public class ExitCommand implements Command {
     }
 
     @Override
-    public DungeonGame execute(DungeonGame game, String... arguments) {
+    public void execute(DungeonGame game, String... arguments) {
         game.stop();
-        return game;
     }
 }
