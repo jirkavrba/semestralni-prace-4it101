@@ -14,7 +14,7 @@ public class DropCommand implements Command {
     @Override
     public void execute(DungeonGame game, String... arguments) {
         if (arguments.length == 0) {
-            throw new IllegalArgumentException("Příkaz vyžaduje právě jeden argument, a to jméno věci, kterou má hráč položit.");
+            throw new IllegalArgumentException("Příkaz vyžaduje právě jeden argument, a to jméno věci, kterou chceš položit.");
         }
 
         Player player = game.getPlayer();
