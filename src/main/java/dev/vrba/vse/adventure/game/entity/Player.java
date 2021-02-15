@@ -26,7 +26,7 @@ public class Player implements Entity {
         return this.backpack;
     }
 
-    public void equip(@NotNull EquipableItem item) {
+    public void equip(@Nullable EquipableItem item) {
         this.equippedItem = item;
     }
 

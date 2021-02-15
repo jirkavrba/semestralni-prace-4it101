@@ -31,6 +31,7 @@ public class GameOutput {
         StringBuilder builder = new StringBuilder();
 
         printBackpack(builder);
+        printEquippedItem(builder);
 
         builder.append("Nacházíš se v místnosti ")
                 .append(Color.CYAN)
@@ -58,6 +59,18 @@ public class GameOutput {
 
             builder.append("Věci v batohu: ")
                     .append(String.join(", ", names))
+                    .append("\n");
+        }
+    }
+
+    private void printEquippedItem(@NotNull StringBuilder builder) {
+        Player player = game.getPlayer();
+
+        if (player.hasEquippedItem()) {
+            builder.append("Momentálně držíš: ")
+                    .append(Color.PURPLE)
+                    .append(player.getEquippedItem().getName())
+                    .append(Color.RESET)
                     .append("\n");
         }
     }

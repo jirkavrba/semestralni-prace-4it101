@@ -3,6 +3,7 @@ package dev.vrba.vse.adventure.game;
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.items.Coins;
 import dev.vrba.vse.adventure.game.items.Key;
+import dev.vrba.vse.adventure.game.items.Sword;
 import dev.vrba.vse.adventure.game.plan.*;
 import dev.vrba.vse.adventure.game.items.Backpack;
 import dev.vrba.vse.adventure.game.ui.CommandPrompt;
@@ -88,6 +89,7 @@ public class DungeonGame {
         room3.addExit(new LockedRoomExit(room4, redKey));
         room3.addExit(new LockedRoomExit(room5, greenKey));
         room3.addItem(new Coins(20));
+        room3.addItem(new Sword());
 
         room4.addExit(new BasicRoomExit(room3));
         room4.addItem(greenKey);

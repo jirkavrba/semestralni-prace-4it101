@@ -23,17 +23,18 @@ public class DropCommand implements Command {
         Room room = game.getGamePlan().getCurrentRoom();
 
         String name = String.join(" ", arguments);
-        Optional<PickableItem> item = player.getBackpack().getItems()
+        PickableItem item = player.getBackpack().getItems()
                 .stream()
                 .filter(current -> current.getName().equals(name))
-                .findFirst();
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Věc s názvem " + name + " nebyla v batohu nalezena."));
 
-        if (!item.isPresent()) {
-            throw new IllegalArgumentException("Věc s názvem " + name + " nebyla v batohu nalezena.");
+        room.addItem(item);
+        player.getBackpack().remove(item);
+
+        if (player.hasEquippedItem() && player.getEquippedItem().equals(item)) {
+            player.equip(null);
         }
-
-        room.addItem(item.get());
-        player.getBackpack().remove(item.get());
 
         return game;
     }
