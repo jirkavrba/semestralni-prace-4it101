@@ -51,7 +51,7 @@ public class CommandPrompt {
         }
     }
 
-    private void printCurrentState() throws IOException {
+    private void printCurrentState() {
         String state = output.printCurrentState();
         System.out.println(state);
     }
