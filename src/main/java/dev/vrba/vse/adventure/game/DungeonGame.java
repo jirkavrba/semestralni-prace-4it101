@@ -1,6 +1,7 @@
 package dev.vrba.vse.adventure.game;
 
 import dev.vrba.vse.adventure.game.entity.Player;
+import dev.vrba.vse.adventure.game.items.Key;
 import dev.vrba.vse.adventure.game.plan.*;
 import dev.vrba.vse.adventure.game.items.Backpack;
 import dev.vrba.vse.adventure.game.ui.CommandPrompt;
@@ -49,11 +50,19 @@ public class DungeonGame {
     private GamePlan createDefaultGamePlan() {
         Set<Room> rooms = new HashSet<>();
 
+        BasicRoom entry = new BasicRoom("Vstup");
         BasicRoom hallway = new BasicRoom("Chodba");
-        BasicRoom entry = new BasicRoom("Vstup", new BasicRoomExit(hallway));
+
+        entry.addExit(new BasicRoomExit(hallway));
 
         rooms.add(entry);
         rooms.add(hallway);
+
+        Key redKey = new Key(Key.Color.RED);
+        Key blueKey = new Key(Key.Color.BLUE);
+        Key greenKey = new Key(Key.Color.GREEN);
+
+        hallway.addItem(redKey);
 
         return new DungeonGamePlan(rooms, entry);
     }
