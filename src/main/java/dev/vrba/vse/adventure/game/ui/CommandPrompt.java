@@ -17,10 +17,11 @@ public class CommandPrompt {
     private final GameOutput output;
 
     private final Command[] commands = new Command[]{
+        new DropCommand(),
         new ExitCommand(),
         new HelpCommand(),
         new MoveCommand(),
-        new PickCommand()
+        new PickCommand(),
     };
 
     public CommandPrompt(@NotNull DungeonGame game) {
