@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.DungeonGame;
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.items.Backpack;
+import dev.vrba.vse.adventure.game.items.EquipableItem;
 import dev.vrba.vse.adventure.game.items.Item;
 import dev.vrba.vse.adventure.game.items.PickableItem;
 import dev.vrba.vse.adventure.game.plan.Room;
@@ -55,7 +56,18 @@ public class GameOutput {
                 .append("\n");
 
         if (!backpack.getItems().isEmpty()) {
-            Iterable<String> names = backpack.getItems().stream().map(Item::getName).collect(Collectors.toList());
+            Iterable<String> names = backpack.getItems()
+                    .stream()
+                    .map(current -> {
+                        if (current instanceof EquipableItem) {
+                            return Color.PURPLE + current.getName() + Color.RESET;
+                        }
+                        // TODO: Add support for colored consumables
+                        else {
+                            return current.getName();
+                        }
+                    })
+                    .collect(Collectors.toList());
 
             builder.append("Věci v batohu: ")
                     .append(String.join(", ", names))
