@@ -3,6 +3,8 @@ package dev.vrba.vse.adventure.game.ui;
 import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.DungeonGame;
 import dev.vrba.vse.adventure.game.entity.Player;
+import dev.vrba.vse.adventure.game.items.Item;
+import dev.vrba.vse.adventure.game.items.PickableItem;
 import dev.vrba.vse.adventure.game.plan.Room;
 import dev.vrba.vse.adventure.game.plan.RoomExit;
 
@@ -34,12 +36,12 @@ public class GameOutput {
                 .append("\n");
 
         printExists(builder);
+        printItems(builder);
 
         return builder.toString();
     }
 
     private void printExists(@NotNull StringBuilder builder) {
-
         Player player = game.getPlayer();
         Room room = game.getGamePlan().getCurrentRoom();
 
@@ -75,6 +77,32 @@ public class GameOutput {
                             .append(exit.getReasonWhyCannotBeUsed())
                             .append("\n");
                 }
+            }
+        }
+    }
+
+    private void printItems(@NotNull StringBuilder builder) {
+        Player player = game.getPlayer();
+        Room room = game.getGamePlan().getCurrentRoom();
+
+        Set<Item> items = room.getItems();
+
+        if (!items.isEmpty()) {
+            builder.append("V místnosti se nachází následující věci:\n");
+
+            for (Item item : items) {
+                builder.append(item.getName());
+
+                if (item instanceof PickableItem) {
+                    PickableItem pickableItem = (PickableItem) item;
+
+                    builder.append(" (tuto věc lze sebrat) - váha: ")
+                            .append(player.getBackpack().canAdd(pickableItem) ? Color.GREEN : Color.RED)
+                            .append(pickableItem.getWeight())
+                            .append(Color.RESET);
+                }
+
+                builder.append("\n");
             }
         }
     }

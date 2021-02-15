@@ -1,33 +1,42 @@
 package dev.vrba.vse.adventure.game.items;
 
 import com.sun.istack.NotNull;
+import dev.vrba.vse.adventure.game.ui.Color;
 
 public class Key implements PickableItem {
-    public enum Color {
-        RED("Červený"),
-        BLUE("Modrý"),
-        GREEN("Zelený");
+    // TODO: Maybe extract color rendering etc. to an UI-related class?
+    public enum KeyColor {
+        RED("Červený", Color.RED),
+        BLUE("Modrý", Color.BLUE),
+        GREEN("Zelený", Color.GREEN);
 
         private final String name;
 
-        Color(String name) {
+        private final String color;
+
+        KeyColor(String name, String color) {
             this.name = name;
+            this.color = color;
         }
 
         public String getName() {
             return this.name;
         }
+
+        public String getColor() {
+            return this.color;
+        }
     }
 
-    private final Color color;
+    private final KeyColor color;
 
-    public Key(@NotNull Color color) {
+    public Key(@NotNull KeyColor color) {
         this.color = color;
     }
 
     @Override
     public String getName() {
-        return color.getName() + " klíč";
+        return color.getColor() + color.getName() + " klíč" + Color.RESET;
     }
 
     @Override

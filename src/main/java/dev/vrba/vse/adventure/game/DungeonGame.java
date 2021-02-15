@@ -58,10 +58,11 @@ public class DungeonGame {
         rooms.add(entry);
         rooms.add(hallway);
 
-        Key redKey = new Key(Key.Color.RED);
-        Key blueKey = new Key(Key.Color.BLUE);
-        Key greenKey = new Key(Key.Color.GREEN);
+        Key redKey = new Key(Key.KeyColor.RED);
+        Key blueKey = new Key(Key.KeyColor.BLUE);
+        Key greenKey = new Key(Key.KeyColor.GREEN);
 
+        entry.addItem(greenKey);
         hallway.addItem(redKey);
 
         return new DungeonGamePlan(rooms, entry);
