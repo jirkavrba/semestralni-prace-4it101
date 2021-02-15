@@ -1,6 +1,7 @@
 package dev.vrba.vse.adventure.game;
 
 import dev.vrba.vse.adventure.game.entity.Enemy;
+import dev.vrba.vse.adventure.game.entity.LivingEntity;
 import dev.vrba.vse.adventure.game.entity.LivingEntityStats;
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.entity.items.*;
@@ -39,14 +40,30 @@ public class DungeonGame {
         prompt.showExitNote();
     }
 
+    // TODO: Split this method into several smaller ones
     public void performGameTick() {
         if (!this.isPlaying()) {
             return;
         }
 
-        if (this.getPlayer().hasEquippedItem() && this.getPlayer().getEquippedItem() == this.trophy) {
+        Player player = this.getPlayer();
+        Room room = this.getGamePlan().getCurrentRoom();
+
+        if (player.hasEquippedItem() && player.getEquippedItem() == this.trophy) {
             this.playing = false;
             this.prompt.showWinNote();
+        }
+
+        if (!room.getEnemies().isEmpty()) {
+            for (LivingEntity enemy : room.getEnemies()) {
+                this.prompt.showDamagedByEnemyNote(enemy);
+                player.damage(enemy.getStats().getStrength());
+            }
+        }
+
+        if (player.isDead()) {
+            this.playing = false;
+            this.prompt.showDeadNote();
         }
     }
 
