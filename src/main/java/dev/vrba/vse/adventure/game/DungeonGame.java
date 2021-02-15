@@ -1,5 +1,6 @@
 package dev.vrba.vse.adventure.game;
 
+import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.entity.Enemy;
 import dev.vrba.vse.adventure.game.entity.LivingEntity;
 import dev.vrba.vse.adventure.game.entity.LivingEntityStats;
@@ -19,7 +20,7 @@ public class DungeonGame {
 
     private final GamePlan gamePlan;
 
-    private final CommandPrompt prompt;
+    private CommandPrompt prompt;
 
     private Trophy trophy;
 
@@ -27,6 +28,16 @@ public class DungeonGame {
         this.player = createDefaultPlayer();
         this.gamePlan = createDefaultGamePlan();
         this.prompt = new CommandPrompt(this);
+    }
+
+    public DungeonGame(@NotNull CommandPrompt prompt) {
+        this.player = createDefaultPlayer();
+        this.gamePlan = createDefaultGamePlan();
+        this.prompt = prompt;
+    }
+
+    public void setCommandPrompt(@NotNull CommandPrompt prompt) {
+        this.prompt = prompt;
     }
 
     public void start() {
