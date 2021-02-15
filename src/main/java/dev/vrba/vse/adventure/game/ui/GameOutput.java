@@ -2,6 +2,7 @@ package dev.vrba.vse.adventure.game.ui;
 
 import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.DungeonGame;
+import dev.vrba.vse.adventure.game.entity.LivingEntity;
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.entity.items.Backpack;
 import dev.vrba.vse.adventure.game.entity.items.EquipableItem;
@@ -34,6 +35,7 @@ public class GameOutput {
         printEquippedItem(builder);
         printPlayerStats(builder);
         printCurrentRoom(builder);
+        printEnemies(builder);
         printExists(builder);
         printItems(builder);
 
@@ -104,6 +106,34 @@ public class GameOutput {
                 .append(room.getName())
                 .append(Color.RESET)
                 .append("\n");
+    }
+
+    private void printEnemies(@NotNull StringBuilder builder) {
+        Room room = game.getGamePlan().getCurrentRoom();
+
+        if (!room.getEnemies().isEmpty()) {
+            builder.append(Color.RED)
+                    .append("V místnosti se nachází nepřátelé!\n")
+                    .append(Color.RESET);
+
+            for (LivingEntity enemy : room.getEnemies()) {
+                builder.append(" - ")
+                        .append(Color.RED)
+                        .append(enemy.getName())
+                        .append(Color.RESET)
+                        .append(" (")
+                        .append(Color.RED)
+                        .append("životy: ")
+                        .append(enemy.getStats().getHealth())
+                        .append(Color.RESET)
+                        .append(", ")
+                        .append(Color.YELLOW)
+                        .append("síla: ")
+                        .append(enemy.getStats().getStrength())
+                        .append(Color.RESET)
+                        .append(")\n");
+            }
+        }
     }
 
     private void printExists(@NotNull StringBuilder builder) {
