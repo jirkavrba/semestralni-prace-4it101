@@ -1,7 +1,5 @@
 package dev.vrba.vse.adventure.game.entity.items;
 
-import dev.vrba.vse.adventure.game.entity.items.Backpack;
-import dev.vrba.vse.adventure.game.entity.items.Coins;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
