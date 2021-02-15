@@ -21,7 +21,7 @@ public class DropCommandTest extends GameTest {
     }
 
     @Test
-    public void cannotInvokeCommandWithoutArguments() {
+    public void testCannotInvokeCommandWithoutArguments() {
         DungeonGame game = createGameWithMockedCommandPrompt();
         DropCommand command = new DropCommand();
 
@@ -35,7 +35,7 @@ public class DropCommandTest extends GameTest {
 
 
     @Test
-    public void cannotInvokeCommandWithInvalidTarget() {
+    public void testCannotInvokeCommandWithInvalidTarget() {
         DungeonGame game = createGameWithMockedCommandPrompt();
         DropCommand command = new DropCommand();
 
@@ -56,7 +56,7 @@ public class DropCommandTest extends GameTest {
     }
 
     @Test
-    public void canInvokeCommandWithValidTarget() {
+    public void testCanInvokeCommandWithValidTarget() {
         DungeonGame game = createGameWithMockedCommandPrompt();
         DropCommand command = new DropCommand();
 

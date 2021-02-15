@@ -19,7 +19,7 @@ public class ConsumeCommandTest extends GameTest {
     }
 
     @Test
-    public void cannotInvokeCommandWithoutArguments() {
+    public void testCannotInvokeCommandWithoutArguments() {
         DungeonGame game = createGameWithMockedCommandPrompt();
         ConsumeCommand command = new ConsumeCommand();
 
@@ -32,7 +32,7 @@ public class ConsumeCommandTest extends GameTest {
     }
 
     @Test
-    public void cannotInvokeCommandWithoutValidTarget() {
+    public void testCannotInvokeCommandWithoutValidTarget() {
         DungeonGame game = createGameWithMockedCommandPrompt();
         ConsumeCommand command = new ConsumeCommand();
 
@@ -50,26 +50,7 @@ public class ConsumeCommandTest extends GameTest {
     }
 
     @Test
-    public void canInvokeCommandWithValidTarget() {
-        DungeonGame game = createGameWithMockedCommandPrompt();
-        ConsumeCommand command = new ConsumeCommand();
-
-        Potion dummyPotion = new Potion("dummy", new LivingEntityStats(10, 20), 1);
-        Player player = game.getPlayer();
-
-        player.getBackpack().add(dummyPotion);
-
-        assertEquals(50, player.getStats().getHealth());
-        assertEquals(10, player.getStats().getStrength());
-
-        assertDoesNotThrow(() -> command.execute(game, "dummy"));
-
-        assertEquals(60, player.getStats().getHealth());
-        assertEquals(30, player.getStats().getStrength());
-    }
-
-    @Test
-    public void cannotInvokeWithTargetThatIsNotConsumable() {
+    public void testCannotInvokeWithTargetThatIsNotConsumable() {
         DungeonGame game = createGameWithMockedCommandPrompt();
         ConsumeCommand command = new ConsumeCommand();
 
@@ -90,5 +71,24 @@ public class ConsumeCommandTest extends GameTest {
 
         assertEquals(50, player.getStats().getHealth());
         assertEquals(10, player.getStats().getStrength());
+    }
+
+    @Test
+    public void testCanInvokeCommandWithValidTarget() {
+        DungeonGame game = createGameWithMockedCommandPrompt();
+        ConsumeCommand command = new ConsumeCommand();
+
+        Potion dummyPotion = new Potion("dummy", new LivingEntityStats(10, 20), 1);
+        Player player = game.getPlayer();
+
+        player.getBackpack().add(dummyPotion);
+
+        assertEquals(50, player.getStats().getHealth());
+        assertEquals(10, player.getStats().getStrength());
+
+        assertDoesNotThrow(() -> command.execute(game, "dummy"));
+
+        assertEquals(60, player.getStats().getHealth());
+        assertEquals(30, player.getStats().getStrength());
     }
 }
