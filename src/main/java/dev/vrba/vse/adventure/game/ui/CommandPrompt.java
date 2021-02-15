@@ -15,26 +15,35 @@ public class CommandPrompt {
 
     private DungeonGame game;
 
+    private final GameOutput output;
+
     private final Command[] commands = new Command[]{
         new HelpCommand()
     };
 
     public CommandPrompt(@NotNull DungeonGame game) {
         this.game = game;
+        this.output = new GameOutput(game);
     }
 
     public void startInputLoop() {
         while (game.isPlaying()) {
             try {
+                printCurrentState();
                 handleNextCommand();
             }
             catch (IOException exception) {
-                System.out.println("Došlo k chybě I/O.");
+                System.out.println(GameOutput.TerminalColor.RED + "Došlo k chybě I/O." + GameOutput.TerminalColor.RESET);
             }
             catch (CommandNotFoundException exception) {
-                System.out.println("Příkaz nenalezen.");
+                System.out.println(GameOutput.TerminalColor.RED + "Příkaz nenalezen!" + GameOutput.TerminalColor.RESET);
             }
         }
+    }
+
+    private void printCurrentState() throws IOException {
+        String state = output.printCurrentState();
+        System.out.println(state);
     }
 
     private void handleNextCommand() throws CommandNotFoundException, IOException {

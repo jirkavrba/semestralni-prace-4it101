@@ -24,4 +24,14 @@ public class DungeonGamePlan implements GamePlan {
     public Room getCurrentRoom() {
         return currentRoom;
     }
+
+    @Override
+    public GamePlan setCurrentRoom(@NotNull Room room) {
+        if (!rooms.contains(room)) {
+            throw new IllegalArgumentException("Room was not found in the game plan. Cannot make it the current room.");
+        }
+
+        currentRoom = room;
+        return this;
+    }
 }
