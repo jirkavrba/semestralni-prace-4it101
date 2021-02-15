@@ -35,6 +35,8 @@ public class CommandPrompt {
             try {
                 printCurrentState();
                 handleNextCommand();
+
+                game.performGameTick();
             }
             catch (IOException exception) {
                 System.out.println(Color.RED + "Došlo k chybě I/O." + Color.RESET);
@@ -76,5 +78,9 @@ public class CommandPrompt {
     public void showExitNote() {
         System.out.println("Na viděnou přístě...");
         System.out.println("Ukončuji hru.");
+    }
+
+    public void showWinNote() {
+        System.out.println("You won lmao, IDK...");
     }
 }

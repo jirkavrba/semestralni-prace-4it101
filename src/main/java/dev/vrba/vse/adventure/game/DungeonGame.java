@@ -3,11 +3,8 @@ package dev.vrba.vse.adventure.game;
 import dev.vrba.vse.adventure.game.entity.Enemy;
 import dev.vrba.vse.adventure.game.entity.LivingEntityStats;
 import dev.vrba.vse.adventure.game.entity.Player;
-import dev.vrba.vse.adventure.game.entity.items.Coins;
-import dev.vrba.vse.adventure.game.entity.items.Key;
-import dev.vrba.vse.adventure.game.entity.items.Sword;
+import dev.vrba.vse.adventure.game.entity.items.*;
 import dev.vrba.vse.adventure.game.plan.*;
-import dev.vrba.vse.adventure.game.entity.items.Backpack;
 import dev.vrba.vse.adventure.game.ui.CommandPrompt;
 
 import java.util.HashSet;
@@ -22,6 +19,8 @@ public class DungeonGame {
     private final GamePlan gamePlan;
 
     private final CommandPrompt prompt;
+
+    private Trophy trophy;
 
     public DungeonGame() {
         this.player = createDefaultPlayer();
@@ -38,6 +37,17 @@ public class DungeonGame {
     public void stop() {
         playing = false;
         prompt.showExitNote();
+    }
+
+    public void performGameTick() {
+        if (!this.isPlaying()) {
+            return;
+        }
+
+        if (this.getPlayer().hasEquippedItem() && this.getPlayer().getEquippedItem() == this.trophy) {
+            this.playing = false;
+            this.prompt.showWinNote();
+        }
     }
 
     public Player getPlayer() {
@@ -67,8 +77,10 @@ public class DungeonGame {
         Key blueKey = new Key(Key.KeyColor.BLUE);
         Key greenKey = new Key(Key.KeyColor.GREEN);
 
-        Enemy druid = new Enemy("Druid", new LivingEntityStats(20, 5));
+        Trophy trophy = new Trophy("Thanosova rukavice", 10);
+
         Enemy orc = new Enemy("Ork", new LivingEntityStats(15, 15));
+        Enemy druid = new Enemy("Druid", new LivingEntityStats(20, 5));
         Enemy bigChungus = new Enemy("Big chungus", new LivingEntityStats(100, 10));
 
         BasicRoom entry = new BasicRoom("vstup");
@@ -126,6 +138,7 @@ public class DungeonGame {
         boss.addEnemy(bigChungus);
 
         exit.addExit(new BasicRoomExit(room7));
+        exit.addItem(trophy);
 
         rooms.add(entry);
         rooms.add(room1);
@@ -138,6 +151,8 @@ public class DungeonGame {
         rooms.add(room8);
         rooms.add(boss);
         rooms.add(exit);
+
+        this.trophy = trophy;
 
         return new DungeonGamePlan(rooms, entry);
     }
