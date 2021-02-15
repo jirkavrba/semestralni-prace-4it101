@@ -1,5 +1,6 @@
 package dev.vrba.vse.adventure.game;
 
+import dev.vrba.vse.adventure.game.entity.Enemy;
 import dev.vrba.vse.adventure.game.entity.LivingEntityStats;
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.entity.items.Coins;
@@ -66,6 +67,10 @@ public class DungeonGame {
         Key blueKey = new Key(Key.KeyColor.BLUE);
         Key greenKey = new Key(Key.KeyColor.GREEN);
 
+        Enemy druid = new Enemy("Druid", new LivingEntityStats(20, 5));
+        Enemy orc = new Enemy("Ork", new LivingEntityStats(15, 15));
+        Enemy bigChungus = new Enemy("Big chungus", new LivingEntityStats(100, 10));
+
         BasicRoom entry = new BasicRoom("vstup");
         BasicRoom room1 = new BasicRoom("chodba");
         BasicRoom room2 = new BasicRoom("laboratoř");
@@ -87,6 +92,7 @@ public class DungeonGame {
 
         room2.addExit(new BasicRoomExit(room1));
         room2.addItem(redKey);
+        room2.addEnemy(druid);
 
         room3.addExit(new BasicRoomExit(room1));
         room3.addExit(new LockedRoomExit(room4, redKey));
@@ -96,6 +102,7 @@ public class DungeonGame {
 
         room4.addExit(new BasicRoomExit(room3));
         room4.addItem(greenKey);
+        room4.addEnemy(orc);
 
         room5.addExit(new BasicRoomExit(room3));
         room5.addExit(new BasicRoomExit(room6));
@@ -116,6 +123,7 @@ public class DungeonGame {
         boss.addExit(new BasicRoomExit(room7));
         boss.addItem(blueKey);
         boss.addItem(new Coins(40));
+        boss.addEnemy(bigChungus);
 
         exit.addExit(new BasicRoomExit(room7));
 

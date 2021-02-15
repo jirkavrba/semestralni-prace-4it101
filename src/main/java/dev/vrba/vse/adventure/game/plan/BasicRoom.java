@@ -1,12 +1,12 @@
 package dev.vrba.vse.adventure.game.plan;
 
 import com.sun.istack.NotNull;
+import dev.vrba.vse.adventure.game.entity.Enemy;
+import dev.vrba.vse.adventure.game.entity.LivingEntity;
 import dev.vrba.vse.adventure.game.entity.items.Item;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class BasicRoom implements Room {
 
@@ -16,22 +16,13 @@ public class BasicRoom implements Room {
 
     private final Set<Item> items;
 
+    private final Set<LivingEntity> enemies;
+
     public BasicRoom(@NotNull String name) {
         this.name = name;
         this.exits = new HashSet<>();
         this.items = new HashSet<>();
-    }
-
-    public BasicRoom(@NotNull String name, RoomExit... exits) {
-        this.name = name;
-        this.exits = Arrays.stream(exits).collect(Collectors.toSet());
-        this.items = new HashSet<>();
-    }
-
-    public BasicRoom(@NotNull String name, @NotNull Set<RoomExit> exits, @NotNull Set<Item> items) {
-        this.name = name;
-        this.exits = exits;
-        this.items = items;
+        this.enemies = new HashSet<>();
     }
 
     @Override
@@ -50,8 +41,23 @@ public class BasicRoom implements Room {
     }
 
     @Override
+    public Set<LivingEntity> getEnemies() {
+       return this.enemies;
+    }
+
+    @Override
+    public void addExit(@NotNull RoomExit exit) {
+        this.exits.add(exit);
+    }
+
+    @Override
     public void addItem(@NotNull Item item) {
         this.items.add(item);
+    }
+
+    @Override
+    public void addEnemy(@NotNull LivingEntity enemy) {
+        this.enemies.add((Enemy) enemy);
     }
 
     @Override
@@ -60,7 +66,7 @@ public class BasicRoom implements Room {
     }
 
     @Override
-    public void addExit(@NotNull RoomExit exit) {
-        this.exits.add(exit);
+    public void removeEnemy(@NotNull LivingEntity enemy) {
+        this.enemies.remove(enemy);
     }
 }
