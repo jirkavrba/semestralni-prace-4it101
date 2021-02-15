@@ -1,11 +1,14 @@
 package dev.vrba.vse.adventure.game;
 
-import dev.vrba.vse.adventure.game.DungeonGame;
+import com.sun.istack.NotNull;
+import dev.vrba.vse.adventure.game.plan.Room;
 import dev.vrba.vse.adventure.game.ui.CommandPrompt;
+
+import java.util.NoSuchElementException;
 
 public abstract class GameTest {
 
-     private static class FakeCommandPrompt extends CommandPrompt {
+    private static class FakeCommandPrompt extends CommandPrompt {
         public FakeCommandPrompt(DungeonGame game) {
             super(game);
         }
@@ -17,11 +20,20 @@ public abstract class GameTest {
     }
 
     protected static DungeonGame createGameWithMockedCommandPrompt() {
-         DungeonGame game = new DungeonGame();
+        DungeonGame game = new DungeonGame();
 
-         game.setCommandPrompt(new FakeCommandPrompt(game));
-         game.start();
+        game.setCommandPrompt(new FakeCommandPrompt(game));
+        game.start();
 
-         return game;
+        return game;
+    }
+
+    protected static Room findRoomByName(@NotNull DungeonGame game, @NotNull String name) {
+        return game.getGamePlan()
+                .getRooms()
+                .stream()
+                .filter(room -> room.getName().equals(name))
+                .findFirst()
+                .orElseThrow(NoSuchElementException::new);
     }
 }
