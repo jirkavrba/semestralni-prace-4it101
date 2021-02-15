@@ -24,16 +24,24 @@ public class GameOutput {
             return Color.GREEN + "Hra skončila." + Color.RESET;
         }
 
-        StringBuilder builder = new StringBuilder();
-
-        Player player = game.getPlayer();
         Room room = game.getGamePlan().getCurrentRoom();
+        StringBuilder builder = new StringBuilder();
 
         builder.append("Nacházíš se v místnosti ")
                 .append(Color.CYAN)
                 .append(room.getName())
                 .append(Color.RESET)
                 .append("\n");
+
+        printExists(builder);
+
+        return builder.toString();
+    }
+
+    private void printExists(@NotNull StringBuilder builder) {
+
+        Player player = game.getPlayer();
+        Room room = game.getGamePlan().getCurrentRoom();
 
         if (!room.getExits().isEmpty()) {
 
@@ -69,7 +77,5 @@ public class GameOutput {
                 }
             }
         }
-
-        return builder.toString();
     }
 }
