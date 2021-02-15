@@ -18,14 +18,14 @@ public class CommandPrompt {
     private final GameOutput output;
 
     private final Command[] commands = new Command[]{
-        new BonkCommand(),
-        new ConsumeCommand(),
-        new DropCommand(),
-        new ExitCommand(),
-        new EquipCommand(),
-        new HelpCommand(),
-        new MoveCommand(),
-        new PickCommand(),
+            new BonkCommand(),
+            new ConsumeCommand(),
+            new DropCommand(),
+            new ExitCommand(),
+            new EquipCommand(),
+            new HelpCommand(),
+            new MoveCommand(),
+            new PickCommand(),
     };
 
     public CommandPrompt(@NotNull DungeonGame game) {
@@ -68,18 +68,13 @@ public class CommandPrompt {
         String line = reader.readLine();
         String[] parts = line.split(" ");
 
-        try {
-            String name = parts[0];
-            Command command = Arrays.stream(commands)
-                    .filter(c -> c.getName().equals(name))
-                    .findFirst()
-                    .orElseThrow(CommandNotFoundException::new);
+        String name = parts[0];
+        Command command = Arrays.stream(commands)
+                .filter(c -> c.getName().equals(name))
+                .findFirst()
+                .orElseThrow(CommandNotFoundException::new);
 
-            command.execute(game, Arrays.copyOfRange(parts, 1, parts.length));
-        }
-        finally {
-            reader.close();
-        }
+        command.execute(game, Arrays.copyOfRange(parts, 1, parts.length));
     }
 
     public void showExitNote() {
@@ -102,7 +97,7 @@ public class CommandPrompt {
     public void showDeadNote() {
         System.out.println(
                 "Podlehl jsi svým zraněním a zemřel jsi. \n" +
-                Color.CYAN + "Press F to pay respect." + Color.RESET
+                        Color.CYAN + "Press F to pay respect." + Color.RESET
         );
     }
 }
