@@ -99,11 +99,11 @@ public class DungeonGame {
 
         Trophy trophy = new Trophy("Thanosova rukavice", 10);
 
-        Potion healthPotion = new Potion("Lektvar života", new LivingEntityStats(50, 0), 10);
-        Potion strengthPotion = new Potion("Lektvar síly", new LivingEntityStats(10, 20), 10);
+        Potion healthPotion = new Potion("lektvar života", new LivingEntityStats(50, 0), 10);
+        Potion strengthPotion = new Potion("lektvar síly", new LivingEntityStats(10, 20), 10);
 
-        Enemy orc = new Enemy("Ork", new LivingEntityStats(15, 15));
-        Enemy druid = new Enemy("Druid", new LivingEntityStats(20, 5));
+        Enemy orc = new Enemy("Uganda knuckle", new LivingEntityStats(15, 15));
+        Enemy druid = new Enemy("Swole doge", new LivingEntityStats(20, 5));
         Enemy bigChungus = new Enemy("Big chungus", new LivingEntityStats(100, 10));
 
         BasicRoom entry = new BasicRoom("vstup");
