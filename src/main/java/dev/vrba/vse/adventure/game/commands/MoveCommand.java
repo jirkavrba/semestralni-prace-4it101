@@ -4,6 +4,7 @@ import dev.vrba.vse.adventure.game.DungeonGame;
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.plan.Room;
 import dev.vrba.vse.adventure.game.plan.RoomExit;
+import dev.vrba.vse.adventure.game.ui.Color;
 
 import java.util.Optional;
 
@@ -15,6 +16,12 @@ public class MoveCommand implements Command {
     @Override
     public String getName() {
         return "jdi";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Umožňuje průchod mezi místnostmi.\n" +
+                "např. " + Color.GREEN + "jdi <jméno místnosti>" + Color.RESET;
     }
 
     @Override

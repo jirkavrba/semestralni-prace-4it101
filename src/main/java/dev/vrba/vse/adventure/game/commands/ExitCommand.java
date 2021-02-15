@@ -13,6 +13,11 @@ public class ExitCommand implements Command {
     }
 
     @Override
+    public String getDescription() {
+        return "Ukončí hru";
+    }
+
+    @Override
     public void execute(DungeonGame game, String... arguments) {
         game.stop();
     }

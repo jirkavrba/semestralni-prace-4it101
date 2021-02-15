@@ -4,6 +4,7 @@ import dev.vrba.vse.adventure.game.DungeonGame;
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.entity.items.EquipableItem;
 import dev.vrba.vse.adventure.game.entity.items.PickableItem;
+import dev.vrba.vse.adventure.game.ui.Color;
 
 /**
  * Příkaz sloužící k vzatí předmětu (instance implementující EquipableEntity) do ruky
@@ -13,6 +14,13 @@ public class EquipCommand implements Command {
     @Override
     public String getName() {
         return "vezmi";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Umožňuje vzít předmět z batohu do ruky.\n" +
+                "Tyto předměty jsou v bathou vyznačeny " + Color.PURPLE + "fialově" + Color.RESET + "\n" +
+                "např. " + Color.GREEN + "vezmi <jméno věci v batohu>" + Color.RESET;
     }
 
     @Override

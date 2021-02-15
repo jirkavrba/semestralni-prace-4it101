@@ -7,10 +7,14 @@ import dev.vrba.vse.adventure.game.ui.Color;
  * Příkaz, který vypíše nápovědu k programu
  */
 public class HelpCommand implements Command {
-
     @Override
     public String getName() {
         return "nápověda";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Poskytuje nápovědu k programu a ostatním příkazům.";
     }
 
     @Override
@@ -31,9 +35,9 @@ public class HelpCommand implements Command {
                     .append(Color.CYAN)
                     .append(command.getName())
                     .append(Color.RESET)
-                    .append(":\n")
-                    // TODO: Append description
-                    .append("\n");
+                    .append(":\n - ")
+                    .append(command.getDescription())
+                    .append("\n\n");
         }
 
         System.out.println(builder.toString());

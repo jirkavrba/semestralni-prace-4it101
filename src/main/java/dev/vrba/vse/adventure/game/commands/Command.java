@@ -13,6 +13,11 @@ public interface Command {
     String getName();
 
     /**
+     * @return popis příkazu a jeho parametrů
+     */
+    String getDescription();
+
+    /**
      * Samotná implementace příkazu
      * @param game hra, nad kterou se má příkaz vykonat
      * @param arguments argumenty příkazu předané přes terminál

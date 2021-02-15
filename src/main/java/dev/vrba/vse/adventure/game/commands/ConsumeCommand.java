@@ -4,6 +4,7 @@ import dev.vrba.vse.adventure.game.DungeonGame;
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.entity.items.ConsumableItem;
 import dev.vrba.vse.adventure.game.entity.items.PickableItem;
+import dev.vrba.vse.adventure.game.ui.Color;
 
 /**
  * Příkaz sloužící k vypití lektvaru (nebo jiné implementace ConsumableItem)
@@ -12,6 +13,12 @@ public class ConsumeCommand implements Command {
     @Override
     public String getName() {
         return "vypij";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Umožňuje vypít lektvar, a získat zlepšení schopností\n" +
+               "např. " + Color.GREEN + "vypij <jméno lektvaru>" + Color.RESET;
     }
 
     @Override

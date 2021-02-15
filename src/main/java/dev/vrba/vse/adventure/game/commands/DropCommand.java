@@ -4,6 +4,7 @@ import dev.vrba.vse.adventure.game.DungeonGame;
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.entity.items.PickableItem;
 import dev.vrba.vse.adventure.game.plan.Room;
+import dev.vrba.vse.adventure.game.ui.Color;
 
 /**
  * Příkaz sloužící k vyhození předmětu z batohu
@@ -13,6 +14,12 @@ public class DropCommand implements Command {
     @Override
     public String getName() {
         return "polož";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Umožňuje vyhodit předmět z batohu.\n" +
+                "např. " + Color.GREEN + "polož <jméno předmětu>" + Color.RESET;
     }
 
     @Override

@@ -5,6 +5,7 @@ import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.entity.items.Item;
 import dev.vrba.vse.adventure.game.entity.items.PickableItem;
 import dev.vrba.vse.adventure.game.plan.Room;
+import dev.vrba.vse.adventure.game.ui.Color;
 
 import java.util.Optional;
 
@@ -16,6 +17,13 @@ public class PickCommand implements Command {
     @Override
     public String getName() {
         return "seber";
+    }
+
+
+    @Override
+    public String getDescription() {
+        return "Umožňuje sebrat věc v místnosti a dát jí do batohu, pokud není příliš těžká.\n" +
+                "např. " + Color.GREEN + "seber <jméno věci v místnosti>" + Color.RESET;
     }
 
     @Override

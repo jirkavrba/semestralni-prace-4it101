@@ -4,14 +4,23 @@ import dev.vrba.vse.adventure.game.DungeonGame;
 import dev.vrba.vse.adventure.game.entity.LivingEntity;
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.plan.Room;
+import dev.vrba.vse.adventure.game.ui.Color;
 
 /**
  * Příkaz sloužící k "útoku" na nepřátelé
  */
 public class BonkCommand implements Command {
+
     @Override
     public String getName() {
         return "bonkni";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Umožňuje udělit nepříteli v místnosti BONK!. \n" +
+               "Pokud je nepřítel dostatečně bonknut je odveden meme policií do horny jail.\n" +
+                "např. " + Color.GREEN + "bonk <jméno nepřítele>" + Color.RESET;
     }
 
     @Override
