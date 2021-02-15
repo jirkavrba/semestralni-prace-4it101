@@ -10,7 +10,7 @@ public class HelpCommandTest extends GameTest {
     @Test
     public void testCommandHasExpectedName() {
         Command command = new HelpCommand();
-        assertEquals("napoveda", command.getName());
+        assertEquals("nápověda", command.getName());
     }
 
     @Test

@@ -40,6 +40,8 @@ public class CommandPrompt {
      * Začne ve smyčce přijímat příkazy od uživatele a vyhodnocovat je
      */
     public void startInputLoop() {
+        this.showIntroBanner();
+
         while (game.isPlaying()) {
             try {
                 printCurrentState();
@@ -50,15 +52,23 @@ public class CommandPrompt {
                 game.performGameTick();
             }
             catch (IOException exception) {
-                System.out.println(Color.RED + "Došlo k chybě I/O." + Color.RESET);
+                System.out.println(Color.RED + "Došlo k chybě I/O." + Color.RESET + "\n");
             }
             catch (CommandNotFoundException exception) {
                 System.out.println(Color.RED + "Příkaz nenalezen!" + Color.RESET);
+                System.out.println("Pro zobrazení nápovědy použij příkaz " + Color.CYAN + "nápověda" + Color.RESET + "\n");
             }
             catch (IllegalArgumentException exception) {
-                System.out.println(Color.RED + "Chybné argumenty příkazu:\n" + exception.getMessage() + Color.RESET);
+                System.out.println(Color.RED + "Chybné argumenty příkazu:\n" + exception.getMessage() + Color.RESET + "\n");
             }
         }
+    }
+
+    /**
+     * @return všechny zaregistrované příkazy
+     */
+    public Command[] getCommands() {
+        return this.commands;
     }
 
     private void printCurrentState() {
@@ -81,6 +91,25 @@ public class CommandPrompt {
                 .orElseThrow(CommandNotFoundException::new);
 
         command.execute(game, Arrays.copyOfRange(parts, 1, parts.length));
+    }
+
+    /**
+     * Zobrazí logo při zapnutí hry
+     */
+    public void showIntroBanner() {
+        System.out.println(Color.RED + " _____     __  __     __   __     ______     ______     ______     __   __");
+        System.out.println(Color.YELLOW + "/\\  __-.  /\\ \\/\\ \\   /\\ \"-.\\ \\   /\\  ___\\   /\\  ___\\   /\\  __ \\   /\\ \"-.\\ \\\\");
+        System.out.println(Color.GREEN + "\\ \\ \\/\\ \\ \\ \\ \\_\\ \\  \\ \\ \\-.  \\  \\ \\ \\__ \\  \\ \\  __\\   \\ \\ \\/\\ \\  \\ \\ \\-.");
+        System.out.println(Color.BLUE + " \\ \\____-  \\ \\_____\\  \\ \\_\\\\\"\\_\\  \\ \\_____\\  \\ \\_____\\  \\ \\_____\\  \\ \\_\\\\\"\\_\\");
+        System.out.println(Color.PURPLE + "  \\/____/   \\/_____/   \\/_/ \\/_/   \\/_____/   \\/_____/   \\/_____/   \\/_/ \\/_/" + Color.RESET);
+        System.out.println("\n");
+        System.out.println("---- Semestrální práce k předmětu 4IT101 - Programování v Javě ----");
+        System.out.println("---- Jiří Vrba, LS 2020/2021 --------------------------------------");
+        System.out.println("\n");
+
+        System.out.println("Big chungus ukradl Thanosovi jeho rukavici a chce zničit polovinu populace.");
+        System.out.println("Tvým úkolem je najít ho a za pomoci meme policie ho poslat do horny jail a zmocnit se rukavice.");
+        System.out.println("(k vyhrání hry je potřeba vzít si rukavice pomocí příkazu " + Color.CYAN + new EquipCommand().getName() + Color.RESET + ")\n");
     }
 
     /**
