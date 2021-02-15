@@ -5,11 +5,11 @@ import dev.vrba.vse.adventure.game.DungeonGame;
 import dev.vrba.vse.adventure.game.plan.Room;
 import dev.vrba.vse.adventure.game.plan.RoomExit;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class GameOutput {
 
     public static class TerminalColor {
         public static final String RESET = "\u001B[0m";
-        public static final String BLACK = "\u001B[30m";
         public static final String RED = "\u001B[31m";
         public static final String GREEN = "\u001B[32m";
         public static final String YELLOW = "\u001B[33m";
@@ -46,7 +46,7 @@ public class GameOutput {
 
             for (RoomExit exit : room.getExits()) {
                 builder.append(TerminalColor.BLUE)
-                       .append(exit.getTo())
+                       .append(exit.getTo().getName())
                        .append(TerminalColor.RESET)
                        .append(",");
             }

@@ -2,6 +2,7 @@ package dev.vrba.vse.adventure.game.plan;
 
 import com.sun.istack.NotNull;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +15,12 @@ public class BasicRoom implements Room {
     public BasicRoom(@NotNull String name) {
         this.name = name;
         this.exits = new HashSet<>();
+    }
+
+    public BasicRoom(@NotNull String name, RoomExit... exits) {
+        this.name = name;
+        this.exits = new HashSet<>();
+        this.exits.addAll(Arrays.asList(exits));
     }
 
     public BasicRoom(@NotNull String name, @NotNull Set<RoomExit> exits) {
