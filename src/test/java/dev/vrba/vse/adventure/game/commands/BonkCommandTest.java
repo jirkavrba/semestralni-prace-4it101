@@ -5,7 +5,6 @@ import dev.vrba.vse.adventure.game.GameTest;
 import dev.vrba.vse.adventure.game.entity.Enemy;
 import dev.vrba.vse.adventure.game.entity.LivingEntityStats;
 import dev.vrba.vse.adventure.game.entity.Player;
-import dev.vrba.vse.adventure.game.plan.Room;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
