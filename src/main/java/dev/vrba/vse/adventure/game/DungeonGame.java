@@ -1,5 +1,6 @@
 package dev.vrba.vse.adventure.game;
 
+import dev.vrba.vse.adventure.game.entity.LivingEntityStats;
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.items.Coins;
 import dev.vrba.vse.adventure.game.items.Key;
@@ -52,7 +53,9 @@ public class DungeonGame {
 
     private Player createDefaultPlayer() {
         Backpack backpack = new Backpack(100);
-        return new Player(backpack);
+        LivingEntityStats stats = new LivingEntityStats(50, 10);
+
+        return new Player(backpack, stats);
     }
 
     @SuppressWarnings("DuplicatedCode")
@@ -89,7 +92,7 @@ public class DungeonGame {
         room3.addExit(new LockedRoomExit(room4, redKey));
         room3.addExit(new LockedRoomExit(room5, greenKey));
         room3.addItem(new Coins(20));
-        room3.addItem(new Sword());
+        room3.addItem(new Sword(40));
 
         room4.addExit(new BasicRoomExit(room3));
         room4.addItem(greenKey);

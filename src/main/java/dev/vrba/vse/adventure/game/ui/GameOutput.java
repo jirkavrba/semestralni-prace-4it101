@@ -28,18 +28,12 @@ public class GameOutput {
             return Color.GREEN + "Hra skončila." + Color.RESET;
         }
 
-        Room room = game.getGamePlan().getCurrentRoom();
         StringBuilder builder = new StringBuilder();
 
         printBackpack(builder);
         printEquippedItem(builder);
-
-        builder.append("Nacházíš se v místnosti ")
-                .append(Color.CYAN)
-                .append(room.getName())
-                .append(Color.RESET)
-                .append("\n");
-
+        printPlayerStats(builder);
+        printCurrentRoom(builder);
         printExists(builder);
         printItems(builder);
 
@@ -85,6 +79,31 @@ public class GameOutput {
                     .append(Color.RESET)
                     .append("\n");
         }
+    }
+
+    private void printPlayerStats(@NotNull StringBuilder builder) {
+        Player player = game.getPlayer();
+
+        builder.append("Tvoje životy: ")
+                .append(Color.RED)
+                .append(player.getStats().getHealth())
+                .append(Color.RESET)
+                .append("\n")
+                .append("Tvoje síla: ")
+                .append(Color.YELLOW)
+                .append(player.getStats().getStrength())
+                .append(Color.RESET)
+                .append("\n");
+    }
+
+    private void printCurrentRoom(@NotNull StringBuilder builder) {
+        Room room = game.getGamePlan().getCurrentRoom();
+
+        builder.append("Nacházíš se v místnosti ")
+                .append(Color.CYAN)
+                .append(room.getName())
+                .append(Color.RESET)
+                .append("\n");
     }
 
     private void printExists(@NotNull StringBuilder builder) {
