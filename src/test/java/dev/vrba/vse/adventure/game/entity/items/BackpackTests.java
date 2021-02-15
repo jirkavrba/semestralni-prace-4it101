@@ -1,34 +1,12 @@
-package dev.vrba.vse.adventure.items;
+package dev.vrba.vse.adventure.game.entity.items;
 
-import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.entity.items.Backpack;
-import dev.vrba.vse.adventure.game.entity.items.PickableItem;
+import dev.vrba.vse.adventure.game.entity.items.Coins;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class BackpackTests {
-
-    private static class SimplePickableItem implements PickableItem {
-        private final String name;
-        private final int weight;
-
-        public SimplePickableItem(@NotNull String name, @NotNull int weight) {
-            this.name = name;
-            this.weight = weight;
-        }
-
-        @Override
-        public String getName() {
-            return name;
-        }
-
-        @Override
-        public int getWeight() {
-            return weight;
-        }
-    }
-
     @Test
     public void testBackpackCalculatesWeightOfItsItems() {
         Backpack backpack = new Backpack(100);
@@ -37,7 +15,7 @@ public class BackpackTests {
         assertEquals(100, backpack.getRemainingWeight());
         assertEquals(0, backpack.getTotalItemsWeight());
 
-        SimplePickableItem something = new SimplePickableItem("Something", 10);
+        Coins something = new Coins(10);
 
         assertTrue(backpack.canAdd(something));
 
@@ -47,7 +25,7 @@ public class BackpackTests {
         assertEquals(90, backpack.getRemainingWeight());
         assertEquals(10, backpack.getTotalItemsWeight());
 
-        SimplePickableItem another = new SimplePickableItem("Another thing", 20);
+        Coins another = new Coins(20);
 
         assertTrue(backpack.canAdd(another));
 
@@ -68,9 +46,9 @@ public class BackpackTests {
     public void testBackpackCanOnlyCarryItemsUptoGivenWeight() {
         Backpack backpack = new Backpack(30);
 
-        SimplePickableItem firstItem = new SimplePickableItem("First", 10);
-        SimplePickableItem secondItem = new SimplePickableItem("Second", 20);
-        SimplePickableItem thirdItem = new SimplePickableItem("Third", 10);
+        Coins firstItem = new Coins(10);
+        Coins secondItem = new Coins(20);
+        Coins thirdItem = new Coins(10);
 
         assertEquals(30, backpack.getRemainingWeight());
         assertTrue(backpack.canAdd(firstItem));
