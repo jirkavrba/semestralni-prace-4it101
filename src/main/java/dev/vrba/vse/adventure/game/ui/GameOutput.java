@@ -2,6 +2,8 @@ package dev.vrba.vse.adventure.game.ui;
 
 import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.DungeonGame;
+import dev.vrba.vse.adventure.game.plan.Room;
+import dev.vrba.vse.adventure.game.plan.RoomExit;
 
 public class GameOutput {
 
@@ -26,12 +28,30 @@ public class GameOutput {
     @NotNull
     public String printCurrentState() {
         if (!game.isPlaying()) {
-            return "Hra skončila";
+            return TerminalColor.GREEN + "Hra skončila." + TerminalColor.RESET;
         }
 
-        return "Nacházíš se v místnosti " +
-                TerminalColor.CYAN +
-                game.getGamePlan().getCurrentRoom().getName() +
-                TerminalColor.RESET;
+        StringBuilder builder = new StringBuilder();
+
+        Room room = game.getGamePlan().getCurrentRoom();
+
+        builder.append("Nacházíš se v místnosti ")
+                .append(TerminalColor.CYAN)
+                .append(room.getName())
+                .append(TerminalColor.RESET)
+                .append("\n");
+
+        if (!room.getExits().isEmpty()) {
+            builder.append("Z místnosti jsou následující východy:\n");
+
+            for (RoomExit exit : room.getExits()) {
+                builder.append(TerminalColor.BLUE)
+                       .append(exit.getTo())
+                       .append(TerminalColor.RESET)
+                       .append(",");
+            }
+        }
+
+        return builder.toString();
     }
 }
