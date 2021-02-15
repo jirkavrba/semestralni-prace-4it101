@@ -1,6 +1,7 @@
 package dev.vrba.vse.adventure.game;
 
 import dev.vrba.vse.adventure.game.entity.Player;
+import dev.vrba.vse.adventure.game.items.Coins;
 import dev.vrba.vse.adventure.game.items.Key;
 import dev.vrba.vse.adventure.game.plan.*;
 import dev.vrba.vse.adventure.game.items.Backpack;
@@ -78,6 +79,7 @@ public class DungeonGame {
         room1.addExit(new BasicRoomExit(entry));
         room1.addExit(new BasicRoomExit(room2));
         room1.addExit(new BasicRoomExit(room3));
+        room1.addItem(new Coins(30));
 
         room2.addExit(new BasicRoomExit(room1));
         room2.addItem(redKey);
@@ -85,6 +87,7 @@ public class DungeonGame {
         room3.addExit(new BasicRoomExit(room1));
         room3.addExit(new LockedRoomExit(room4, redKey));
         room3.addExit(new LockedRoomExit(room5, greenKey));
+        room3.addItem(new Coins(20));
 
         room4.addExit(new BasicRoomExit(room3));
         room4.addItem(greenKey);
@@ -92,18 +95,22 @@ public class DungeonGame {
         room5.addExit(new BasicRoomExit(room3));
         room5.addExit(new BasicRoomExit(room6));
         room5.addExit(new BasicRoomExit(room7));
+        room5.addItem(new Coins(30));
 
         room6.addExit(new BasicRoomExit(room5));
+        room6.addItem(new Coins(20));
 
         room7.addExit(new BasicRoomExit(room5));
         room7.addExit(new BasicRoomExit(room8));
         room7.addExit(new BasicRoomExit(boss));
         room7.addExit(new LockedRoomExit(exit, blueKey));
+        room7.addItem(new Coins(10));
 
         room8.addExit(new BasicRoomExit(room7));
 
         boss.addExit(new BasicRoomExit(room7));
         boss.addItem(blueKey);
+        boss.addItem(new Coins(40));
 
         exit.addExit(new BasicRoomExit(room7));
 
