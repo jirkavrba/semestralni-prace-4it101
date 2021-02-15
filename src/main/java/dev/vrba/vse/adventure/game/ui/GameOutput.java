@@ -4,10 +4,7 @@ import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.DungeonGame;
 import dev.vrba.vse.adventure.game.entity.LivingEntity;
 import dev.vrba.vse.adventure.game.entity.Player;
-import dev.vrba.vse.adventure.game.entity.items.Backpack;
-import dev.vrba.vse.adventure.game.entity.items.EquipableItem;
-import dev.vrba.vse.adventure.game.entity.items.Item;
-import dev.vrba.vse.adventure.game.entity.items.PickableItem;
+import dev.vrba.vse.adventure.game.entity.items.*;
 import dev.vrba.vse.adventure.game.plan.Room;
 import dev.vrba.vse.adventure.game.plan.RoomExit;
 
@@ -58,7 +55,9 @@ public class GameOutput {
                         if (current instanceof EquipableItem) {
                             return Color.PURPLE + current.getName() + Color.RESET;
                         }
-                        // TODO: Add support for colored consumables
+                        else if (current instanceof ConsumableItem) {
+                            return Color.GREEN + current.getName() + Color.RESET;
+                        }
                         else {
                             return current.getName();
                         }
