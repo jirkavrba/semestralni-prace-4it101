@@ -53,6 +53,10 @@ public class AdventureGame {
         Enemy druid = new Enemy("Swole doge", new LivingEntityStats(20, 5));
         Enemy bigChungus = new Enemy("Big chungus", new LivingEntityStats(100, 10));
 
+        Furniture chair = new Furniture("křeslo");
+        Furniture bed = new Furniture("postel");
+        Furniture statue = new Furniture("socha");
+
         BasicRoom entry = new BasicRoom("vstup");
         BasicRoom room1 = new BasicRoom("chodba");
         BasicRoom room2 = new BasicRoom("laboratoř");
@@ -90,10 +94,12 @@ public class AdventureGame {
         room5.addExit(new BasicRoomExit(room6));
         room5.addExit(new BasicRoomExit(room7));
         room5.addItem(new Coins(30));
+        room5.addItem(statue);
 
         room6.addExit(new BasicRoomExit(room5));
         room6.addItem(new Coins(20));
         room6.addItem(healthPotion);
+        room6.addItem(chair);
 
         room7.addExit(new BasicRoomExit(room5));
         room7.addExit(new BasicRoomExit(room8));
@@ -103,6 +109,7 @@ public class AdventureGame {
 
         room8.addExit(new BasicRoomExit(room7));
         room8.addItem(strengthPotion);
+        room8.addItem(bed);
 
         boss.addExit(new BasicRoomExit(room7));
         boss.addItem(blueKey);
