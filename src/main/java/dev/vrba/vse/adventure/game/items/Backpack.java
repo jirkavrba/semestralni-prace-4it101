@@ -16,11 +16,6 @@ public class Backpack {
         this.items = new HashSet<>();
     }
 
-    public Backpack(int availableWeight, @NotNull Set<PickableItem> items) {
-        this.availableWeight = availableWeight;
-        this.items = items;
-    }
-
     public int getAvailableWeight() {
         return availableWeight;
     }
