@@ -53,6 +53,7 @@ public class DungeonGame {
         return new Player(backpack);
     }
 
+    @SuppressWarnings("DuplicatedCode")
     private GamePlan createDefaultGamePlan() {
         Set<Room> rooms = new HashSet<>();
 
@@ -65,12 +66,12 @@ public class DungeonGame {
         BasicRoom room2 = new BasicRoom("laboratoř");
         BasicRoom room3 = new BasicRoom("schodiště");
         BasicRoom room4 = new BasicRoom("skrýš");
-        BasicRoom room5 = new BasicRoom("skrýš");
-        BasicRoom room6 = new BasicRoom("skrýš");
-        BasicRoom room7 = new BasicRoom("skrýš");
-        BasicRoom room8 = new BasicRoom("skrýš");
-        BasicRoom boss = new BasicRoom("skrýš");
-        BasicRoom exit = new BasicRoom("skrýš");
+        BasicRoom room5 = new BasicRoom("hala");
+        BasicRoom room6 = new BasicRoom("skladiště");
+        BasicRoom room7 = new BasicRoom("rozcestí");
+        BasicRoom room8 = new BasicRoom("cela");
+        BasicRoom boss = new BasicRoom("doupě big chunguse");
+        BasicRoom exit = new BasicRoom("východ");
 
         entry.addExit(new BasicRoomExit(room1));
 
@@ -86,6 +87,7 @@ public class DungeonGame {
         room3.addExit(new LockedRoomExit(room5, greenKey));
 
         room4.addExit(new BasicRoomExit(room3));
+        room4.addItem(greenKey);
 
         room5.addExit(new BasicRoomExit(room3));
         room5.addExit(new BasicRoomExit(room6));
@@ -101,6 +103,7 @@ public class DungeonGame {
         room8.addExit(new BasicRoomExit(room7));
 
         boss.addExit(new BasicRoomExit(room7));
+        boss.addItem(blueKey);
 
         exit.addExit(new BasicRoomExit(room7));
 
