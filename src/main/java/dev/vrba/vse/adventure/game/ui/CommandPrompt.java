@@ -3,6 +3,7 @@ package dev.vrba.vse.adventure.game.ui;
 import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.DungeonGame;
 import dev.vrba.vse.adventure.game.commands.Command;
+import dev.vrba.vse.adventure.game.commands.ExitCommand;
 import dev.vrba.vse.adventure.game.commands.HelpCommand;
 import dev.vrba.vse.adventure.game.exceptions.CommandNotFoundException;
 
@@ -18,7 +19,8 @@ public class CommandPrompt {
     private final GameOutput output;
 
     private final Command[] commands = new Command[]{
-        new HelpCommand()
+        new HelpCommand(),
+        new ExitCommand()
     };
 
     public CommandPrompt(@NotNull DungeonGame game) {
@@ -47,6 +49,7 @@ public class CommandPrompt {
     }
 
     private void handleNextCommand() throws CommandNotFoundException, IOException {
+        System.out.println("----------- zadej příkaz -----------");
         System.out.print("~> ");
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -60,5 +63,10 @@ public class CommandPrompt {
                 .orElseThrow(CommandNotFoundException::new);
 
         game = command.execute(game, Arrays.copyOfRange(parts, 1, parts.length));
+    }
+
+    public void showExitNote() {
+        System.out.println("Na viděnou přístě...");
+        System.out.println("Ukončuji hru.");
     }
 }

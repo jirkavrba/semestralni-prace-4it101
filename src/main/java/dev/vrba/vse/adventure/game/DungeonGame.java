@@ -30,6 +30,11 @@ public class DungeonGame {
         prompt.startInputLoop();
     }
 
+    public void stop() {
+        playing = false;
+        prompt.showExitNote();
+    }
+
     public Player getPlayer() {
         return this.player;
     }
