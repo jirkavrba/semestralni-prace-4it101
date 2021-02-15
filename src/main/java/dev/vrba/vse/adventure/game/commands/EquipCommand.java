@@ -5,7 +5,11 @@ import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.entity.items.EquipableItem;
 import dev.vrba.vse.adventure.game.entity.items.PickableItem;
 
+/**
+ * Příkaz sloužící k vzatí předmětu (instance implementující EquipableEntity) do ruky
+ */
 public class EquipCommand implements Command {
+
     @Override
     public String getName() {
         return "vezmi";

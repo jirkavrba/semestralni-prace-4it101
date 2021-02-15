@@ -1,9 +1,11 @@
 package dev.vrba.vse.adventure.game.entity;
 
 /**
- * An interface representing an entity of the game, this can be a number of things, the player, items within dungeon,
- * enemies, ...
+ * Rozhraní reprezentující obecnou herní entitu, to může být věc, hráč, nepřítel, lektvar...
  */
 public interface Entity {
+    /**
+     * @return jméno věci, které se bude renderovat uživateli ve výpise
+     */
     String getName();
 }

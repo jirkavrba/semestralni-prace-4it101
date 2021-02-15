@@ -3,6 +3,9 @@ package dev.vrba.vse.adventure.game.plan;
 import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.entity.Player;
 
+/**
+ * Implementace průchodu mezi místnostmi, který není ničím podmíněn
+ */
 public class BasicRoomExit implements RoomExit {
 
     private final Room target;

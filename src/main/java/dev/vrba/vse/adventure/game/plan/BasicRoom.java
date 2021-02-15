@@ -8,6 +8,9 @@ import dev.vrba.vse.adventure.game.entity.items.Item;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Implementace rozhraní místnosti
+ */
 public class BasicRoom implements Room {
 
     private final String name;
@@ -57,7 +60,7 @@ public class BasicRoom implements Room {
 
     @Override
     public void addEnemy(@NotNull LivingEntity enemy) {
-        this.enemies.add((Enemy) enemy);
+        this.enemies.add(enemy);
     }
 
     @Override

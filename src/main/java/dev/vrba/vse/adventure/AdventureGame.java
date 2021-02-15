@@ -11,10 +11,14 @@ import dev.vrba.vse.adventure.game.plan.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Třída zastřešující vytvoření, připravení a následného spuštění hry
+ */
 public class AdventureGame {
 
     /**
-     * Application entrypoint, this creates the game instance, instantiates the game plan and opens command prompt
+     * Vstupní metoda celého programu, je zavolána po spuštění aplikace operačním systémem
+     * @param args argumenty konzolové aplikace
      */
     public static void main(String[] args) {
         Trophy trophy = createDefaultTrophy();
@@ -27,10 +31,17 @@ public class AdventureGame {
         game.start();
     }
 
+    /**
+     * Vytvoří výchozí cílový předmět hry
+     * @return předmět, který se následně nastaví jako výchozí cílový předmět
+     */
     public static Trophy createDefaultTrophy() {
         return new Trophy("Thanosova rukavice", 10);
     }
 
+    /**
+     * Vytvoří výchozí instanci hráče, kterou začné hra používat
+     */
     public static Player createDefaultPlayer() {
         Backpack backpack = new Backpack(100);
         LivingEntityStats stats = new LivingEntityStats(50, 10);
@@ -38,6 +49,11 @@ public class AdventureGame {
         return new Player(backpack, stats);
     }
 
+    /**
+     * Vytvoří výchozí herní plán, který začne hra používat
+     * @param trophy cílový předmět, který musí hráč získat
+     * @return vytvořená instance herního plánu
+     */
     @SuppressWarnings("DuplicatedCode")
     public static GamePlan createDefaultGamePlan(@NotNull Trophy trophy) {
         Set<Room> rooms = new HashSet<>();

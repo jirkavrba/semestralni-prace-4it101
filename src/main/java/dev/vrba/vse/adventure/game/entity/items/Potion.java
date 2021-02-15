@@ -3,6 +3,9 @@ package dev.vrba.vse.adventure.game.entity.items;
 import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.entity.LivingEntityStats;
 
+/**
+ * Třída reprezentující lektvar, který je možné vypít
+ */
 public class Potion implements ConsumableItem {
 
     private final String name;

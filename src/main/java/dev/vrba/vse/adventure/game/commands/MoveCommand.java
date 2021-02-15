@@ -7,7 +7,11 @@ import dev.vrba.vse.adventure.game.plan.RoomExit;
 
 import java.util.Optional;
 
+/**
+ * Příkaz, sloužící k přechodu mezi místnostmi
+ */
 public class MoveCommand implements Command {
+
     @Override
     public String getName() {
         return "jdi";

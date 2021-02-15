@@ -4,6 +4,9 @@ import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.entity.items.Key;
 
+/**
+ * Třída implementující průchod mezi místnostmi, ke kterému je vyžadován klíč
+ */
 public class LockedRoomExit extends BasicRoomExit {
 
     private final Key key;
@@ -11,10 +14,6 @@ public class LockedRoomExit extends BasicRoomExit {
     public LockedRoomExit(@NotNull Room target, @NotNull Key key) {
         super(target);
         this.key = key;
-    }
-
-    public Key getKey() {
-        return this.key;
     }
 
     @Override

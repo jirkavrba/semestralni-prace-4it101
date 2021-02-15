@@ -11,6 +11,9 @@ import dev.vrba.vse.adventure.game.plan.RoomExit;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Třída zabalující výstup uživateli
+ */
 @SuppressWarnings("SpellCheckingInspection")
 public class GameOutput {
 
@@ -20,7 +23,9 @@ public class GameOutput {
         this.game = game;
     }
 
-    @NotNull
+    /**
+     * @return textová reprezentace aktuálního stavu hry
+     */
     public String printCurrentState() {
         if (!game.isPlaying()) {
             return Color.GREEN + "Hra skončila." + Color.RESET;

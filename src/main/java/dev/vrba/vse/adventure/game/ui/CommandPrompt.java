@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
+/**
+ * Příkazový řádek, který vyhodnocuje vstup od uživatele a následně mu vrací výpis reprezentující stav hry
+ */
 public class CommandPrompt {
 
     private final DungeonGame game;
@@ -33,6 +36,9 @@ public class CommandPrompt {
         this.output = new GameOutput(game);
     }
 
+    /**
+     * Začne ve smyčce přijímat příkazy od uživatele a vyhodnocovat je
+     */
     public void startInputLoop() {
         while (game.isPlaying()) {
             try {
@@ -77,23 +83,40 @@ public class CommandPrompt {
         command.execute(game, Arrays.copyOfRange(parts, 1, parts.length));
     }
 
+    /**
+     * Zobrazí zprávu při ukončení hry
+     */
     public void showExitNote() {
         System.out.println("Na viděnou přístě...");
         System.out.println("Ukončuji hru.");
     }
 
+    /**
+     * Zobrazí zprávu, když uživatel vyhraje hru
+     */
     public void showWinNote() {
         System.out.println("Vyhrál jsi.");
     }
 
+    /**
+     * Zobrazí zprávu, pokud byl hráč zraněn některým z nepřátelů v místnosti
+     * @param enemy nepřítel, který zranění způsobil
+     */
     public void showDamagedByEnemyNote(LivingEntity enemy) {
         System.out.println(Color.RED + enemy.getName() + " na tebe zaútočil a ubral ti " + enemy.getStats().getStrength() + " životů!" + Color.RESET);
     }
 
+    /**
+     * Zobrazí zprávu, že uživatel zabil nepřítele
+     * @param enemy nepřítel, kterého hráč zabil
+     */
     public void showKilledEnemy(LivingEntity enemy) {
         System.out.println(Color.YELLOW + "bonknul jsi " + enemy.getName() + " a meme policie ho odvedla do horny jail." + Color.RESET);
     }
 
+    /**
+     * Zobrazí zprávu, pokud hráč zemře
+     */
     public void showDeadNote() {
         System.out.println(
                 "Podlehl jsi svým zraněním a zemřel jsi. \n" +

@@ -25,6 +25,9 @@ public class DungeonGame {
         this.prompt = new CommandPrompt(this);
     }
 
+    /**
+     * Metoda, která je volána po každém provedeném příkazu, probíhá v něm útok nepřátel a kontrola, jestli hráč vyhrál hru
+     */
     public void performGameTick() {
         if (!this.isPlaying()) {
             return;
@@ -51,39 +54,63 @@ public class DungeonGame {
         }
     }
 
+    /**
+     * Spustí hru a přijímání příkazů od uživatele
+     */
     public void start() {
         playing = true;
         prompt.startInputLoop();
     }
 
+    /**
+     * Zastaví hru a zobrazí zprávu o konci hry uživateli
+     */
     public void stop() {
         playing = false;
         prompt.showExitNote();
     }
 
-    // TODO: Split this method into several smaller ones
-
-    public Player getPlayer() {
-        return this.player;
-    }
+    /**
+     * @return jestli je momentální hra aktivní
+     */
     public boolean isPlaying() {
         return this.playing;
     }
 
+    /**
+     * @return instance hráče, kterou hra využívá
+     */
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    /**
+     * @return instance herního plánu, který hra využívá
+     */
     public GamePlan getGamePlan() {
         return this.gamePlan;
     }
 
+    /**
+     * @return instance příkazového řádku, který hra využívá
+     */
     public CommandPrompt getCommandPrompt() {
         return this.prompt;
     }
 
+    /**
+     * Nastaví novou instanci příkazového řádku, který má hra začít využívat
+     * @param prompt příkazový řádek, který má hra začít využívat
+     */
     public void setCommandPrompt(@NotNull CommandPrompt prompt) {
         this.prompt = prompt;
     }
 
+    /**
+     * Nastaví cílový předmět, po jehož vzatí do ruky, hráč vyhraje hru
+     * @param trophy předmět, který se nastaví jako cílový předmět hry
+     */
     public void setTrophy(@NotNull Trophy trophy) {
         this.trophy = trophy;
     }
-
 }

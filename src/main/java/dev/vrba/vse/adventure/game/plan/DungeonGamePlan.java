@@ -4,6 +4,9 @@ import com.sun.istack.NotNull;
 
 import java.util.Set;
 
+/**
+ * Třída implementující herní plán
+ */
 public class DungeonGamePlan implements GamePlan {
 
     private Room currentRoom;

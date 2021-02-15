@@ -2,6 +2,9 @@ package dev.vrba.vse.adventure.game.entity;
 
 import com.sun.istack.NotNull;
 
+/**
+ * Třída reprezentující nepřítele, který bude na hráče útočit, dokud jeden ze zúčastněných nezemře
+ */
 public class Enemy implements LivingEntity {
 
     private final String name;

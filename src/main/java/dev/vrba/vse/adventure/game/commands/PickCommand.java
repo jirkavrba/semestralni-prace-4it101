@@ -8,7 +8,11 @@ import dev.vrba.vse.adventure.game.plan.Room;
 
 import java.util.Optional;
 
+/**
+ * Příkaz sloužící k sebrání předmětu (instance implementující PickableItem) jeho vložení do batohu
+ */
 public class PickCommand implements Command {
+
     @Override
     public String getName() {
         return "seber";

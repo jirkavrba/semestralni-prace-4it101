@@ -5,7 +5,11 @@ import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.entity.items.PickableItem;
 import dev.vrba.vse.adventure.game.plan.Room;
 
+/**
+ * Příkaz sloužící k vyhození předmětu z batohu
+ */
 public class DropCommand implements Command {
+
     @Override
     public String getName() {
         return "polož";

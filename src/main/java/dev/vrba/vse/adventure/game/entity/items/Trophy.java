@@ -3,6 +3,9 @@ package dev.vrba.vse.adventure.game.entity.items;
 import com.sun.istack.NotNull;
 import dev.vrba.vse.adventure.game.entity.LivingEntityStats;
 
+/**
+ * Třída představující cílovou věc, kterou pokud si hráč vezme do ruky, vyhraje hru
+ */
 public class Trophy implements EquipableItem {
 
     private final String name;

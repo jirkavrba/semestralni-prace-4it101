@@ -5,6 +5,9 @@ import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.entity.items.ConsumableItem;
 import dev.vrba.vse.adventure.game.entity.items.PickableItem;
 
+/**
+ * Příkaz sloužící k vypití lektvaru (nebo jiné implementace ConsumableItem)
+ */
 public class ConsumeCommand implements Command {
     @Override
     public String getName() {

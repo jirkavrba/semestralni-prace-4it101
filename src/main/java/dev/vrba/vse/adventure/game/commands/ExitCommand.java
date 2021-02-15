@@ -2,7 +2,11 @@ package dev.vrba.vse.adventure.game.commands;
 
 import dev.vrba.vse.adventure.game.DungeonGame;
 
+/**
+ * Příkaz, sloužící k ukončení hry
+ */
 public class ExitCommand implements Command {
+
     @Override
     public String getName() {
         return "konec";

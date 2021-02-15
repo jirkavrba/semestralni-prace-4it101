@@ -2,6 +2,9 @@ package dev.vrba.vse.adventure.game.entity.items;
 
 import dev.vrba.vse.adventure.game.entity.LivingEntityStats;
 
+/**
+ * Třída reprezentující meč, který zvyšuje útočnou sílu hráče
+ */
 public class Sword implements EquipableItem {
 
     private final int strength;

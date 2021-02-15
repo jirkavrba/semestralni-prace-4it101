@@ -1,9 +1,18 @@
 package dev.vrba.vse.adventure.game.entity.items;
 
+/**
+ * Třída reprezentující mince pohozené v místnosti
+ */
 public class Coins implements PickableItem {
 
+    /**
+     * Počet mincí
+     */
     private final int amount;
 
+    /**
+     * Váha jedné mince
+     */
     private static final int COIN_WEIGHT = 1;
 
     public Coins(int amount) {

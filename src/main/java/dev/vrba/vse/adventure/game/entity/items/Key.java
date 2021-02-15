@@ -2,6 +2,9 @@ package dev.vrba.vse.adventure.game.entity.items;
 
 import com.sun.istack.NotNull;
 
+/**
+ * Třída představující klíč, který odemyká průchod zamčenými dveřmi
+ */
 public class Key implements PickableItem {
     // TODO: Maybe extract color rendering etc. to an UI-related class?
     public enum KeyColor {

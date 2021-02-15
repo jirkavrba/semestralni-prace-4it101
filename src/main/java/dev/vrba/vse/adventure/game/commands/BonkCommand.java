@@ -5,6 +5,9 @@ import dev.vrba.vse.adventure.game.entity.LivingEntity;
 import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.plan.Room;
 
+/**
+ * Příkaz sloužící k "útoku" na nepřátelé
+ */
 public class BonkCommand implements Command {
     @Override
     public String getName() {
