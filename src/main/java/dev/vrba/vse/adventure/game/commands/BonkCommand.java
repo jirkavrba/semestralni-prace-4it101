@@ -33,6 +33,7 @@ public class BonkCommand implements Command {
         if (enemy.isDead()) {
             // TODO: Enemies might drop loot?
             room.removeEnemy(enemy); // F
+            game.getCommandPrompt().showKilledEnemy(enemy);
         }
 
     }

@@ -74,6 +74,10 @@ public class DungeonGame {
         return this.gamePlan;
     }
 
+    public CommandPrompt getCommandPrompt() {
+        return this.prompt;
+    }
+
     public boolean isPlaying() {
         return this.playing;
     }

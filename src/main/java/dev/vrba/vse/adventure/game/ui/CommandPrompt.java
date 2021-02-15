@@ -89,6 +89,10 @@ public class CommandPrompt {
         System.out.println(Color.RED + enemy.getName() + " na tebe zaútočil a ubral ti " + enemy.getStats().getStrength() + " životů!" + Color.RESET);
     }
 
+    public void showKilledEnemy(LivingEntity enemy) {
+        System.out.println(Color.YELLOW + "bonknul jsi " + enemy.getName() + " a meme policie ho odvedla do horny jail." + Color.RESET);
+    }
+
     public void showDeadNote() {
         System.out.println(
                 "Podlehl jsi svým zraněním a zemřel jsi. \n" +
