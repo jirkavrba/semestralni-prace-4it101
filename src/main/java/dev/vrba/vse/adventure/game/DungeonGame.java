@@ -56,25 +56,46 @@ public class DungeonGame {
     private GamePlan createDefaultGamePlan() {
         Set<Room> rooms = new HashSet<>();
 
-        BasicRoom entry = new BasicRoom("vstup");
-        BasicRoom hallway = new BasicRoom("chodba");
-        BasicRoom locked = new BasicRoom("tajná místnost");
-
         Key redKey = new Key(Key.KeyColor.RED);
         Key blueKey = new Key(Key.KeyColor.BLUE);
         Key greenKey = new Key(Key.KeyColor.GREEN);
 
-        entry.addExit(new BasicRoomExit(hallway));
-        hallway.addExit(new BasicRoomExit(entry));
+        BasicRoom entry = new BasicRoom("vstup");
+        BasicRoom room1 = new BasicRoom("chodba");
+        BasicRoom room2 = new BasicRoom("laboratoř");
+        BasicRoom room3 = new BasicRoom("schodiště");
+        BasicRoom room4 = new BasicRoom("skrýš");
+        BasicRoom room5 = new BasicRoom("skrýš");
+        BasicRoom room6 = new BasicRoom("skrýš");
+        BasicRoom room7 = new BasicRoom("skrýš");
+        BasicRoom room8 = new BasicRoom("skrýš");
+        BasicRoom boss = new BasicRoom("skrýš");
+        BasicRoom exit = new BasicRoom("skrýš");
 
-        entry.addExit(new LockedRoomExit(locked, redKey));
+        entry.addExit(new BasicRoomExit(room1));
+
+        room1.addExit(new BasicRoomExit(entry));
+        room1.addExit(new BasicRoomExit(room2));
+        room1.addExit(new BasicRoomExit(room3));
+
+        room2.addExit(new BasicRoomExit(room1));
+        room2.addItem(redKey);
+
+        room3.addExit(new BasicRoomExit(room1));
+        room3.addExit(new LockedRoomExit(room4, redKey));
+        room3.addExit(new LockedRoomExit(room5, greenKey));
 
         rooms.add(entry);
-        rooms.add(hallway);
-        rooms.add(locked);
-
-        entry.addItem(greenKey);
-        hallway.addItem(redKey);
+        rooms.add(room1);
+        rooms.add(room2);
+        rooms.add(room3);
+        rooms.add(room4);
+        rooms.add(room5);
+        rooms.add(room6);
+        rooms.add(room7);
+        rooms.add(room8);
+        rooms.add(boss);
+        rooms.add(exit);
 
         return new DungeonGamePlan(rooms, entry);
     }

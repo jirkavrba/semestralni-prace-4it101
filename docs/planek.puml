@@ -27,7 +27,7 @@ object místnost3 {
 }
 
 object  místnost4 {
-    fialový klíč
+    zelený klíč
     ork (15 hp)
 }
 
@@ -64,7 +64,7 @@ vstup -- místnost1
 místnost1 -- místnost2
 místnost1 -- místnost3
 místnost3 -- místnost4 #red;text:red : vyžaduje červený klíč
-místnost3 -- místnost5 #purple;text:purple : vyžaduje fialový klíč
+místnost3 -- místnost5 #green;text:green : vyžaduje zelený klíč
 místnost5 -- místnost6
 místnost5 -- místnost7
 místnost7 -- místnost8
