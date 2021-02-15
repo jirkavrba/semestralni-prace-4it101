@@ -22,6 +22,9 @@ public class MoveCommand implements Command {
         Player player = game.getPlayer();
         Room room = game.getGamePlan().getCurrentRoom();
 
+        if (!room.getEnemies().isEmpty()) {
+            throw new IllegalArgumentException("Nemůžeš utéct z místnosti, kde jsou nepřátelé.");
+        }
 
         String name = String.join(" ", arguments);
         Optional<RoomExit> chosenExit = room.getExits()
