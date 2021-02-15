@@ -19,6 +19,7 @@ public class CommandPrompt {
     private final Command[] commands = new Command[]{
         new DropCommand(),
         new ExitCommand(),
+        new EquipCommand(),
         new HelpCommand(),
         new MoveCommand(),
         new PickCommand(),
