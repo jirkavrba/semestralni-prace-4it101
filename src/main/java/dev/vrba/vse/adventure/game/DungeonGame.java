@@ -85,6 +85,25 @@ public class DungeonGame {
         room3.addExit(new LockedRoomExit(room4, redKey));
         room3.addExit(new LockedRoomExit(room5, greenKey));
 
+        room4.addExit(new BasicRoomExit(room3));
+
+        room5.addExit(new BasicRoomExit(room3));
+        room5.addExit(new BasicRoomExit(room6));
+        room5.addExit(new BasicRoomExit(room7));
+
+        room6.addExit(new BasicRoomExit(room5));
+
+        room7.addExit(new BasicRoomExit(room5));
+        room7.addExit(new BasicRoomExit(room8));
+        room7.addExit(new BasicRoomExit(boss));
+        room7.addExit(new LockedRoomExit(exit, blueKey));
+
+        room8.addExit(new BasicRoomExit(room7));
+
+        boss.addExit(new BasicRoomExit(room7));
+
+        exit.addExit(new BasicRoomExit(room7));
+
         rooms.add(entry);
         rooms.add(room1);
         rooms.add(room2);
