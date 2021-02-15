@@ -13,6 +13,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ConsumeCommandTest extends GameTest {
 
     @Test
+    public void testCommandHasExpectedName() {
+        ConsumeCommand command = new ConsumeCommand();
+        assertEquals("vypij", command.getName());
+    }
+
+    @Test
     public void cannotInvokeCommandWithoutArguments() {
         DungeonGame game = createGameWithMockedCommandPrompt();
         ConsumeCommand command = new ConsumeCommand();

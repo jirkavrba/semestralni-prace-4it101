@@ -5,11 +5,19 @@ import dev.vrba.vse.adventure.game.GameTest;
 import dev.vrba.vse.adventure.game.entity.Enemy;
 import dev.vrba.vse.adventure.game.entity.LivingEntityStats;
 import dev.vrba.vse.adventure.game.entity.Player;
+import dev.vrba.vse.adventure.game.plan.Room;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BonkCommandTest extends GameTest {
+
+    @Test
+    public void testCommandHasExpectedName() {
+        BonkCommand command = new BonkCommand();
+        assertEquals("bonkni", command.getName());
+    }
+
     @Test
     public void testCannotInvokeBonkCommandWithoutArguments() {
         DungeonGame game = createGameWithMockedCommandPrompt();
@@ -56,5 +64,30 @@ public class BonkCommandTest extends GameTest {
         assertDoesNotThrow(() -> command.execute(game, "Dummy"));
 
         assertEquals(90, dummy.getStats().getHealth());
+    }
+
+    @Test
+    public void testUserCanKillEnemiesWithBonk() {
+        DungeonGame game = createGameWithMockedCommandPrompt();
+        BonkCommand command = new BonkCommand();
+
+        Room room = game.getGamePlan().getCurrentRoom();
+        Enemy dummy = new Enemy("Dummy", new LivingEntityStats(100, 0));
+        Player player = game.getPlayer();
+
+        room.addEnemy(dummy);
+
+        // Apes together stronk. Ooga booga
+        player.getStats().addBoost(new LivingEntityStats(0, 90));
+
+        assertNull(player.getEquippedItem());
+        assertFalse(room.getEnemies().isEmpty());
+
+        assertEquals(100, player.getStats().getStrength());
+        assertEquals(100, dummy.getStats().getHealth());
+
+        assertDoesNotThrow(() -> command.execute(game, "Dummy"));
+
+        assertTrue(room.getEnemies().isEmpty());
     }
 }
