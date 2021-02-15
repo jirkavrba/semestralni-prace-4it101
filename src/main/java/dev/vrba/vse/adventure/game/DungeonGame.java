@@ -99,6 +99,9 @@ public class DungeonGame {
 
         Trophy trophy = new Trophy("Thanosova rukavice", 10);
 
+        Potion healthPotion = new Potion("Lektvar života", new LivingEntityStats(50, 0), 10);
+        Potion strengthPotion = new Potion("Lektvar síly", new LivingEntityStats(10, 20), 10);
+
         Enemy orc = new Enemy("Ork", new LivingEntityStats(15, 15));
         Enemy druid = new Enemy("Druid", new LivingEntityStats(20, 5));
         Enemy bigChungus = new Enemy("Big chungus", new LivingEntityStats(100, 10));
@@ -143,6 +146,7 @@ public class DungeonGame {
 
         room6.addExit(new BasicRoomExit(room5));
         room6.addItem(new Coins(20));
+        room6.addItem(healthPotion);
 
         room7.addExit(new BasicRoomExit(room5));
         room7.addExit(new BasicRoomExit(room8));
@@ -151,9 +155,11 @@ public class DungeonGame {
         room7.addItem(new Coins(10));
 
         room8.addExit(new BasicRoomExit(room7));
+        room8.addItem(strengthPotion);
 
         boss.addExit(new BasicRoomExit(room7));
         boss.addItem(blueKey);
+        boss.addItem(strengthPotion);
         boss.addItem(new Coins(40));
         boss.addEnemy(bigChungus);
 
