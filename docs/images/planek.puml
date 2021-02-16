@@ -1,0 +1,72 @@
+@startuml
+
+skinparam object {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+}
+
+object vstup {
+    žádné věci
+    žádní nepřátelé
+}
+
+object chodba {
+    30 mincí
+    žádní nepřátelé
+}
+
+object laboratoř {
+    červený klíč
+    Swole doge (20 hp)
+}
+
+object schodiště {
+    meč, 20 mincí
+    žádní nepřátelé
+}
+
+object  skrýš {
+    zelený klíč
+    Uganda knuckle (15 hp)
+}
+
+object hala {
+    30 mincí
+}
+
+object skladiště {
+    20 mincí, elixír života
+    žádní nepřátelé
+}
+
+object rozcestí {
+    10 mincí
+    žádní nepřátelé
+}
+
+object cela {
+    10 mincí, elixír síly
+}
+
+object "doupě big chunguse" as doupě {
+    40 mincí, elixír síly, modrý klíč
+    Big chungus (100 hp)
+}
+
+object konec {
+    Thanosova rukavice
+    žádní nepřátelé
+}
+
+vstup -- chodba
+chodba -- laboratoř
+chodba -- schodiště
+hala <- schodiště #green;text:green : vyžaduje zelený klíč
+skrýš <- schodiště #red;text:red : vyžaduje červený klíč
+hala -- skladiště
+hala -- rozcestí
+rozcestí -- cela
+rozcestí -- doupě
+konec <- rozcestí #blue;text:blue : vyžaduje modrý klíč
+@enduml

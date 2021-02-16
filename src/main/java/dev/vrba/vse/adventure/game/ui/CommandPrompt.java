@@ -109,7 +109,7 @@ public class CommandPrompt {
 
         System.out.println("Big chungus ukradl Thanosovi jeho rukavici a chce zničit polovinu populace.");
         System.out.println("Tvým úkolem je najít ho a za pomoci meme policie ho poslat do horny jail a zmocnit se rukavice.");
-        System.out.println("(k vyhrání hry je potřeba vzít si rukavice pomocí příkazu " + Color.CYAN + new EquipCommand().getName() + Color.RESET + ")\n");
+        System.out.println("(k vyhrání hry je potřeba vzít si rukavici pomocí příkazu " + Color.CYAN + new EquipCommand().getName() + Color.RESET + ")\n");
     }
 
     /**
