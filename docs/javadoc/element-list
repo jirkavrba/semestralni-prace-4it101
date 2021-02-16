@@ -1,0 +1,8 @@
+dev.vrba.vse.adventure
+dev.vrba.vse.adventure.game
+dev.vrba.vse.adventure.game.commands
+dev.vrba.vse.adventure.game.entity
+dev.vrba.vse.adventure.game.entity.items
+dev.vrba.vse.adventure.game.exceptions
+dev.vrba.vse.adventure.game.plan
+dev.vrba.vse.adventure.game.ui
