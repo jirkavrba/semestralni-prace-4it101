@@ -41,3 +41,19 @@ V dungeonu se nachází několik nepřátel, které je nutné porazit. Pokud hr�
 nepřátelé, není možné ji opustit, dokud nejsou všichni nepřátelé poraženi. Nepřátelé na začátku každého tahu
 zaútočí na hráče a ubere mu počet životů podle své síly. Aby hráč zaútočil na nepřítele, je možné použít příkaz
 `bonkni`, který jako parametr přijímá jméno nepřítele.
+
+## Předměty
+
+V některých místnostech na mapě je možné sebrat předměty, které zvyšují schopnosti. Každý předmět má 
+určitou váhu. Hráč má batoh co má maximální nosnost 100, tj. není do něj možné vložit předměty
+jejichž váha sečtená s věcmi, které již v batohu jsou by překročila tuto nosnost.
+
+Předměty je možné dávat do batohu pomocí příkazu `seber` a vyhazovat je pomocí příkazu `polož`.
+
+### Předměty, které je možné vzít do ruky
+
+Tyto předměty jsou vyznačeny fialovou barvou a je možné je vzít pomocí příkazu `vezmi`.
+
+### Předměty, které je možné vypít
+
+Tyto předměty jsou vyznačený zelenou barvou a je možné je vypít pomocí příkazu `vypij`.
