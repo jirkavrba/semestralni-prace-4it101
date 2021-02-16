@@ -19,7 +19,6 @@ public class HelpCommand implements Command {
 
     @Override
     public void execute(DungeonGame game, String... arguments) {
-        // TODO: add description to each command
         Command[] commands = game.getCommandPrompt().getCommands();
 
         StringBuilder builder = new StringBuilder();
