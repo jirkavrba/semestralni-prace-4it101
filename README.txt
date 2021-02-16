@@ -14,3 +14,7 @@ Uživatelská příručka je dostupná v souboru docs/uzivatelska-prirucka.pdf
 Dokumentace pro vývojáře je dostupná v souboru docs/dokumentace.pdf
 
 Zkompilovaný jar je možné najít v souboru semestralni-prace-4it101.jar v archivu
+
+---------------------------------------------------------------------
+
+Zdrojový kód s historií změn je možné najít na adrese https://github.com/jirkavrba/semestralni-prace-4it101
