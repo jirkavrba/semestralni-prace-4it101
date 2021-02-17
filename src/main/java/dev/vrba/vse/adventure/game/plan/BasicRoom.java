@@ -1,7 +1,6 @@
 package dev.vrba.vse.adventure.game.plan;
 
 import com.sun.istack.NotNull;
-import dev.vrba.vse.adventure.game.entity.Enemy;
 import dev.vrba.vse.adventure.game.entity.LivingEntity;
 import dev.vrba.vse.adventure.game.entity.items.Item;
 
