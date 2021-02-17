@@ -17,4 +17,7 @@ Zkompilovaný jar je možné najít v souboru semestralni-prace-4it101.jar v arc
 
 ---------------------------------------------------------------------
 
-Zdrojový kód s historií změn je možné najít na adrese https://github.com/jirkavrba/semestralni-prace-4it101
+Zdrojový kód s historií změn je možné najít i na adrese https://github.com/jirkavrba/semestralni-prace-4it101
+
+Zdrojový kód je v archivu ve složce src/main/java
+Testy jsou v archivu ve složce src/test
