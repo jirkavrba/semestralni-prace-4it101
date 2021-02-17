@@ -5,7 +5,7 @@ Thanosova rukavice, který umožní hráči vyhrát hru.
 
 Jiří Vrba
 
-verze 1.0, programováno během letního semestru 2020/2021
+verze 1.1, programováno během letního semestru 2020/2021
 
 --------------------------------------------------------------------
 
