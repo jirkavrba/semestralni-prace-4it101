@@ -12,7 +12,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Třída zastřešující vytvoření, připravení a následného spuštění hry
+ * Hlavní třída celého programu, zajišťuje vytvoření a spuštění hry, která je implementována v třídě {@code DungeonGame}
+ *
+ * @author Jiří Vrba (vrbj04@vse.cz)
+ * @version 1.1
  */
 public class AdventureGame {
 

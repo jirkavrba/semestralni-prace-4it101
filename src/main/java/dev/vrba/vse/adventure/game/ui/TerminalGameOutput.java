@@ -8,18 +8,18 @@ import dev.vrba.vse.adventure.game.entity.items.*;
 import dev.vrba.vse.adventure.game.plan.Room;
 import dev.vrba.vse.adventure.game.plan.RoomExit;
 
-import java.util.*;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * Třída zabalující výstup uživateli
+ * Třída zabalující výstup uživateli do konzole
  */
 @SuppressWarnings("SpellCheckingInspection")
-public class GameOutput {
+public class TerminalGameOutput {
 
     private final DungeonGame game;
 
-    public GameOutput(@NotNull DungeonGame game) {
+    public TerminalGameOutput(@NotNull DungeonGame game) {
         this.game = game;
     }
 

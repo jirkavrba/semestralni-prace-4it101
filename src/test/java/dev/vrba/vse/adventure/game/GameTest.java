@@ -6,13 +6,13 @@ import dev.vrba.vse.adventure.game.entity.Player;
 import dev.vrba.vse.adventure.game.entity.items.Trophy;
 import dev.vrba.vse.adventure.game.plan.GamePlan;
 import dev.vrba.vse.adventure.game.plan.Room;
-import dev.vrba.vse.adventure.game.ui.CommandPrompt;
+import dev.vrba.vse.adventure.game.ui.TerminalCommandPrompt;
 
 import java.util.NoSuchElementException;
 
 public abstract class GameTest {
 
-    private static class FakeCommandPrompt extends CommandPrompt {
+    private static class FakeCommandPrompt extends TerminalCommandPrompt {
         public FakeCommandPrompt(DungeonGame game) {
             super(game);
         }

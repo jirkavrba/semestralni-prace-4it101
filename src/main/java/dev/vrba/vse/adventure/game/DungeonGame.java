@@ -1,12 +1,18 @@
 package dev.vrba.vse.adventure.game;
 
 import com.sun.istack.NotNull;
+import dev.vrba.vse.adventure.game.commands.*;
 import dev.vrba.vse.adventure.game.entity.LivingEntity;
 import dev.vrba.vse.adventure.game.entity.Player;
-import dev.vrba.vse.adventure.game.entity.items.*;
-import dev.vrba.vse.adventure.game.plan.*;
+import dev.vrba.vse.adventure.game.entity.items.Trophy;
+import dev.vrba.vse.adventure.game.plan.GamePlan;
+import dev.vrba.vse.adventure.game.plan.Room;
 import dev.vrba.vse.adventure.game.ui.CommandPrompt;
+import dev.vrba.vse.adventure.game.ui.TerminalCommandPrompt;
 
+/**
+ * Třída reprezentující samotnou hru, která je spuštěna přes třídu AdventureGame
+ */
 public class DungeonGame {
 
     private boolean playing = false;
@@ -22,7 +28,18 @@ public class DungeonGame {
     public DungeonGame(@NotNull Player player, @NotNull GamePlan gamePlan) {
         this.player = player;
         this.gamePlan = gamePlan;
-        this.prompt = new CommandPrompt(this);
+        this.prompt = new TerminalCommandPrompt(this);
+
+        this.prompt.registerCommands(
+                new BonkCommand(),
+                new ConsumeCommand(),
+                new DropCommand(),
+                new EquipCommand(),
+                new ExitCommand(),
+                new HelpCommand(),
+                new MoveCommand(),
+                new PickCommand()
+        );
     }
 
     /**
@@ -102,7 +119,7 @@ public class DungeonGame {
      * Nastaví novou instanci příkazového řádku, který má hra začít využívat
      * @param prompt příkazový řádek, který má hra začít využívat
      */
-    public void setCommandPrompt(@NotNull CommandPrompt prompt) {
+    public void setCommandPrompt(@NotNull TerminalCommandPrompt prompt) {
         this.prompt = prompt;
     }
 
