@@ -10,7 +10,8 @@ import dev.vrba.vse.adventure.game.exceptions.CommandNotFoundException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Příkazový řádek, který vyhodnocuje vstup od uživatele a následně mu vrací výpis reprezentující stav hry
@@ -23,6 +24,8 @@ public class TerminalCommandPrompt implements CommandPrompt {
 
     private Command[] commands = new Command[]{};
 
+    private Set<Command> unusedCommands = new HashSet<>();
+
     public TerminalCommandPrompt(@NotNull DungeonGame game) {
         this.game = game;
         this.output = new TerminalGameOutput(game);
@@ -31,6 +34,7 @@ public class TerminalCommandPrompt implements CommandPrompt {
     @Override
     public void registerCommands(Command... commands) {
         this.commands = commands;
+        this.unusedCommands.addAll(Arrays.asList(commands));
     }
 
     @Override
@@ -84,6 +88,10 @@ public class TerminalCommandPrompt implements CommandPrompt {
                 .orElseThrow(CommandNotFoundException::new);
 
         command.execute(game, Arrays.copyOfRange(parts, 1, parts.length));
+
+        unusedCommands.remove(command);
+
+        this.printUnusedCommands();
     }
 
     @Override
@@ -101,10 +109,14 @@ public class TerminalCommandPrompt implements CommandPrompt {
         System.out.println("Big chungus ukradl Thanosovi jeho rukavici a chce zničit polovinu populace.");
         System.out.println("Tvým úkolem je najít ho a za pomoci meme policie ho poslat do horny jail a zmocnit se rukavice.");
         System.out.println("(k vyhrání hry je potřeba vzít si rukavici pomocí příkazu " + Color.CYAN + new EquipCommand().getName() + Color.RESET + ")\n");
+
+        this.printUnusedCommands();
     }
 
     @Override
     public void showExitNote() {
+        this.printUnusedCommands();
+
         System.out.println("Na viděnou přístě...");
         System.out.println("Ukončuji hru.");
     }
@@ -130,5 +142,15 @@ public class TerminalCommandPrompt implements CommandPrompt {
                 "Podlehl jsi svým zraněním a zemřel jsi. \n" +
                         Color.CYAN + "Press F to pay respect." + Color.RESET
         );
+    }
+
+    private void printUnusedCommands() {
+       System.out.println("----------- Nepoužité příkazy -----------");
+       System.out.println(
+               this.unusedCommands.stream()
+                    .map(command -> Color.BLUE + command.getName() + Color.RESET)
+                    .collect(Collectors.joining(", "))
+       );
+       System.out.println("\n");
     }
 }
