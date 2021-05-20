@@ -60,6 +60,9 @@ public class TerminalCommandPrompt implements CommandPrompt {
             catch (IllegalArgumentException exception) {
                 System.out.println(Color.RED + "Chybné argumenty příkazu:\n" + exception.getMessage() + Color.RESET + "\n");
             }
+            finally {
+                this.printUnusedCommands();
+            }
         }
     }
 
@@ -90,8 +93,6 @@ public class TerminalCommandPrompt implements CommandPrompt {
         command.execute(game, Arrays.copyOfRange(parts, 1, parts.length));
 
         unusedCommands.remove(command);
-
-        this.printUnusedCommands();
     }
 
     @Override
@@ -151,6 +152,5 @@ public class TerminalCommandPrompt implements CommandPrompt {
                     .map(command -> Color.BLUE + command.getName() + Color.RESET)
                     .collect(Collectors.joining(", "))
        );
-       System.out.println("\n");
     }
 }
