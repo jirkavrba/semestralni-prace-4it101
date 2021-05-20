@@ -24,7 +24,7 @@ public class TerminalCommandPrompt implements CommandPrompt {
 
     private Command[] commands = new Command[]{};
 
-    private Set<Command> unusedCommands = new HashSet<>();
+    private final Set<Command> unusedCommands = new HashSet<>();
 
     public TerminalCommandPrompt(@NotNull DungeonGame game) {
         this.game = game;
